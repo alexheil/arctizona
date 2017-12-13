@@ -1,9 +1,8 @@
-class DeviseCreatePhotographers < ActiveRecord::Migration[5.0]
+class DeviseCreateUsers < ActiveRecord::Migration[5.0]
   def change
-    create_table :photographers do |t|
+    create_table :users do |t|
       t.string :username, null: false, default: ""
       t.string :slug, null: false, default: ""
-
       ## Database authenticatable
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
@@ -37,11 +36,11 @@ class DeviseCreatePhotographers < ActiveRecord::Migration[5.0]
       t.timestamps null: false
     end
 
-    add_index :photographers, :username,                unique: true
-    add_index :photographers, :slug,                unique: true
-    add_index :photographers, :email,                unique: true
-    add_index :photographers, :reset_password_token, unique: true
-    add_index :photographers, :confirmation_token,   unique: true
-    add_index :photographers, :unlock_token,         unique: true
+    add_index :users, :username,                unique: true
+    add_index :users, :slug,                unique: true
+    add_index :users, :email,                unique: true
+    add_index :users, :reset_password_token, unique: true
+    add_index :users, :confirmation_token,   unique: true
+    add_index :users, :unlock_token,         unique: true
   end
 end
