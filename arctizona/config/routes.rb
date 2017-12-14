@@ -12,6 +12,15 @@ Rails.application.routes.draw do
     get "sign_out", to: "users/sessions#destroy"
   end
 
-  resources :users, controller: 'users/users', only: :show
+  resources :users, controller: 'users/users', only: :show do
+    resource :profile, controller: 'users/profiles', only: [:edit, :update]
+    resource :location, controller: 'users/locations', only: [:edit, :update]
+    resource :theme, controller: 'users/themes', only: [:edit, :update]
+    resources :photo_albums, controller: 'artists/photo_albums', except: :index do
+      resources :photos, controller: 'artists/photos', except: :index
+    end
+  end
+
+  resources :relationships, controller: 'users/relationships', only: [:create, :update, :destroy]
 
 end
