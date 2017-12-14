@@ -11,7 +11,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     super
      @user.create_profile(profile_params)
-     #@user.create_user_location(location_params)
+     @user.create_location(location_params)
      @user.create_theme(theme_params)
   end
 
