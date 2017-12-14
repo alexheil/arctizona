@@ -10,7 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171213213920) do
+ActiveRecord::Schema.define(version: 20171214153653) do
+
+  create_table "user_profiles", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "first_name",       default: ""
+    t.string   "last_name",        default: ""
+    t.integer  "age"
+    t.string   "website",          default: ""
+    t.string   "facebook_handle",  default: ""
+    t.string   "facebook_url",     default: ""
+    t.string   "twitter_handle",   default: ""
+    t.string   "twitter_url",      default: ""
+    t.string   "instagram_handle", default: ""
+    t.string   "instagram_url",    default: ""
+    t.text     "biography",        default: ""
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.index ["user_id"], name: "index_user_profiles_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "username",               default: "", null: false

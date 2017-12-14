@@ -1,5 +1,7 @@
 <% if user_signed_in? %>
 
 <%= current_user.username %>
-
+  <% if current_user.user_profile.first_name.blank? %>
+    you have a profile
+  <% end %>
 <% end %>

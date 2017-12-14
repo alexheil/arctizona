@@ -8,9 +8,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    super
+     @user.create_user_profile(profile_params)
+     #@user.create_user_location(location_params)
+     #@user.create_user_theme(theme_params)
+  end
 
   # GET /resource/edit
   # def edit
@@ -35,6 +38,20 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def cancel
   #   super
   # end
+
+  private
+
+    def profile_params
+      params.permit(:biography, :first_name, :last_name, :website, :facebook_handle, :facebook_url, :twitter_handle, :twitter_url, :instagram_handle, :instagram_url, :age)
+    end
+
+    def location_params
+      params.permit(:city, :state, :country)
+    end
+
+    def theme_params
+      params.permit(:main_color, :text_color, :background_color, :link_color)
+    end
 
   # protected
 
