@@ -1,6 +1,6 @@
-class CreateUserProfiles < ActiveRecord::Migration[5.0]
+class CreateProfiles < ActiveRecord::Migration[5.0]
   def change
-    create_table :user_profiles do |t|
+    create_table :profiles do |t|
       t.references :user
       t.string :first_name, default: ""
       t.string :last_name, default: ""

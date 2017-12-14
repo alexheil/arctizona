@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171214153653) do
+ActiveRecord::Schema.define(version: 20171214164411) do
 
-  create_table "user_profiles", force: :cascade do |t|
+  create_table "profiles", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "first_name",       default: ""
     t.string   "last_name",        default: ""
@@ -27,7 +27,18 @@ ActiveRecord::Schema.define(version: 20171214153653) do
     t.text     "biography",        default: ""
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
-    t.index ["user_id"], name: "index_user_profiles_on_user_id"
+    t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
+  create_table "themes", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "main_color",       default: ""
+    t.string   "text_color",       default: ""
+    t.string   "background_color", default: ""
+    t.string   "link_color",       default: ""
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.index ["user_id"], name: "index_themes_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
