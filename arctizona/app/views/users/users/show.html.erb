@@ -1,7 +1,7 @@
 <%= @user.username %> - <%= @user.followers.count %>
 
 <% unless current_user == @user %>
-  <div id="follow_form">
+  <div>
     <% if current_user.following?(@user) %>
       <%= form_for(current_user.active_relationships.find_by(followed_id: @user.id),
                html: { method: :delete }) do |f| %>
