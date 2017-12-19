@@ -1,6 +1,6 @@
 <%= @user.username %> - <%= @user.followers.count %>
 
-<% unless current_user == @user %>
+<% if user_signed_in? && current_user != @user %>
   <div>
     <% if current_user.following?(@user) %>
       <%= form_for(current_user.active_relationships.find_by(followed_id: @user.id),
@@ -26,4 +26,17 @@
 
 <% if @user.gallery.present? %>
   you have a gallery
+
+  <%= form_for(Album.new, url: user_gallery_albums_path(@user, @user.gallery)) do |f| %>
+    <div class="field">
+      <%= f.label :title, class: "label" %><br />
+      <%= f.text_field :title, class: "text-field" %>
+    </div>
+    <%= f.submit "Create photo album", data: { disable_with: 'Creating...' }, class: "submit-button" %>
+  <% end %>
+  <% @user.gallery.albums.each do |album| %>
+    <%= album.title %>
+  <% end %>
+  <%= @user.gallery.albums.count %>
+
 <% end %>
