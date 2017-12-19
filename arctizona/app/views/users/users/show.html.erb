@@ -34,9 +34,10 @@
     </div>
     <%= f.submit "Create photo album", data: { disable_with: 'Creating...' }, class: "submit-button" %>
   <% end %>
+  <%= @user.albums.count %>
   <% @user.gallery.albums.each do |album| %>
     <%= album.title %>
+
   <% end %>
-  <%= @user.gallery.albums.count %>
 
 <% end %>
