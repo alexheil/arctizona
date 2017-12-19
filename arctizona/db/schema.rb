@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171215161249) do
+ActiveRecord::Schema.define(version: 20171219155523) do
+
+  create_table "albums", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "gallery_id"
+    t.string   "title"
+    t.string   "slug"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["gallery_id"], name: "index_albums_on_gallery_id"
+    t.index ["user_id"], name: "index_albums_on_user_id"
+  end
 
   create_table "galleries", force: :cascade do |t|
     t.integer  "user_id"
