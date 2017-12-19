@@ -1,14 +1,14 @@
 class Users::GalleriesController < ApplicationController
 
-  before_action :authenticate_artist!, except: :show
-  before_action :correct_artist, only: :create
-  before_action :correct_photo_album_artist, only: :destroy
-  before_action :set_artist, except: :show
+  before_action :authenticate_user!, except: :show
+  before_action :correct_user, only: :create
+  before_action :correct_photo_album_user, only: :destroy
+  before_action :set_user, except: :show
 
   def create
     @gallery = @user.create_gallery(gallery_params)
     if @gallery.save
-      redirect_to artist_path(@artist)
+      redirect_to user_path(@user)
       flash[:notice] = "You've successfully created a gallery!"
     else
       render 'new'
@@ -30,13 +30,13 @@ class Users::GalleriesController < ApplicationController
       end
     end
 
-    def correct_photo_album_artist
+    def correct_gallery_user
       @gallery = Gallery.friendly.find(params[:id])
       redirect_to user_path(@gallery.user_id) if @gallery.user_id != current_user.id
     end
 
-    def photo_album_params
-      params.require(:gallery)
+    def gallery_params
+      params.permit(:gallery)
     end
 
 end
