@@ -2,7 +2,6 @@ class Album < ApplicationRecord
   extend FriendlyId
   friendly_id :title, use: :slugged
 
-  belongs_to :gallery
   belongs_to :user
 
   has_many :photos, dependent: :destroy

@@ -16,28 +16,42 @@
   </div>
 <% end %>
 
-<% unless @user.gallery.present? %>
-  <% if current_user == @user %>
-    <%= form_for(Gallery.new, url: user_gallery_path(@user)) do |f| %>
-      <%= f.submit "Create gallery", data: { disable_with: 'Creating...' }, class: "submit-button" %>
-    <% end %>
-  <% end %>
+<%= form_for(Album.new, url: user_albums_path(@user)) do |f| %>
+  <div class="field">
+    <%= f.label :title, class: "label" %><br />
+    <%= f.text_field :title, class: "text-field" %>
+  </div>
+  <%= f.submit "Create photo album", data: { disable_with: 'Creating...' }, class: "submit-button" %>
 <% end %>
+<%= @user.albums.count %> - <%= @user.photos.count %>
+<% @user.albums.each do |album| %>
+  <%= album.title %> - <%= album.id %>
 
-<% if @user.gallery.present? %>
-  you have a gallery
-
-  <%= form_for(Album.new, url: user_gallery_albums_path(@user, @user.gallery)) do |f| %>
+  <%= form_for(Photo.new, url: user_album_photos_path(@user, album)) do |f| %>
     <div class="field">
       <%= f.label :title, class: "label" %><br />
       <%= f.text_field :title, class: "text-field" %>
     </div>
-    <%= f.submit "Create photo album", data: { disable_with: 'Creating...' }, class: "submit-button" %>
-  <% end %>
-  <%= @user.albums.count %>
-  <% @user.gallery.albums.each do |album| %>
-    <%= album.title %>
+    <div class="field">
+      <%= f.label :photo, class: "label" %><br />
+      <%= f.file_field :photo %>
+    </div>
+    <div class="field">
+      <%= f.label :description, class: "label" %><br />
+      <%= f.text_area :description, class: "text-area" %>
+    </div>
+    <%= f.label :cover_photo %>
+    <%= f.check_box :cover_photo %>
+    <%= f.label :profile_photo %>
+    <%= f.check_box :profile_photo %><br />
 
+    <%= f.submit "Create photo", data: { disable_with: 'Creating...' }, class: "submit-button" %>
+  <% end %>
+
+  <%= album.photos.count %>
+
+  <% album.photos.each do |photo| %>
+    <%= photo.title %>
   <% end %>
 
 <% end %>

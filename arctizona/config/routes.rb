@@ -16,10 +16,8 @@ Rails.application.routes.draw do
     resource :profile, controller: 'users/profiles', only: [:edit, :update]
     resource :location, controller: 'users/locations', only: [:edit, :update]
     resource :theme, controller: 'users/themes', only: [:edit, :update]
-    resource :gallery, controller: 'users/galleries', only: :create do
-      resources :albums, controller: 'users/albums', except: :index do
-        resources :photos, controller: 'users/photos', except: :index
-      end
+    resources :albums, controller: 'users/albums', except: :index do
+      resources :photos, controller: 'users/photos', except: :index
     end
   end
 

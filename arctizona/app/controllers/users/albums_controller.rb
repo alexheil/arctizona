@@ -12,8 +12,7 @@ class Users::AlbumsController < ApplicationController
   end
 
   def create
-    @gallery = @user.gallery
-    @album = @gallery.albums.build(album_params)
+    @album = @user.albums.build(album_params)
     if @album.save
       redirect_to user_path(@user)
       flash[:notice] = "You've successfully added a photo album!"

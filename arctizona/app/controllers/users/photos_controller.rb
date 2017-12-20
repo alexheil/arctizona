@@ -1,6 +1,6 @@
 class Users::PhotosController < ApplicationController
 
-   before_action :authenticate_user!, except: :show
+  before_action :authenticate_user!, except: :show
   before_action :correct_user, only: :create
   before_action :correct_photo_user, only: :destroy
   before_action :set_user, except: :show
@@ -12,7 +12,6 @@ class Users::PhotosController < ApplicationController
   end
 
   def create
-    @gallery = @user.gallery
     @album = Album.friendly.find(params[:album_id])
     @photo = @album.photos.build(photo_params)
     @photo.user_id = @user.id

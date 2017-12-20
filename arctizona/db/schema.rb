@@ -14,20 +14,11 @@ ActiveRecord::Schema.define(version: 20171219191434) do
 
   create_table "albums", force: :cascade do |t|
     t.integer  "user_id"
-    t.integer  "gallery_id"
     t.string   "title"
     t.string   "slug"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["gallery_id"], name: "index_albums_on_gallery_id"
     t.index ["user_id"], name: "index_albums_on_user_id"
-  end
-
-  create_table "galleries", force: :cascade do |t|
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_galleries_on_user_id"
   end
 
   create_table "locations", force: :cascade do |t|
@@ -42,7 +33,6 @@ ActiveRecord::Schema.define(version: 20171219191434) do
 
   create_table "photos", force: :cascade do |t|
     t.integer  "user_id"
-    t.integer  "gallery_id"
     t.integer  "album_id"
     t.string   "title",         default: ""
     t.string   "photo"
@@ -53,7 +43,6 @@ ActiveRecord::Schema.define(version: 20171219191434) do
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
     t.index ["album_id"], name: "index_photos_on_album_id"
-    t.index ["gallery_id"], name: "index_photos_on_gallery_id"
     t.index ["user_id"], name: "index_photos_on_user_id"
   end
 
