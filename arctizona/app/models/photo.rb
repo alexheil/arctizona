@@ -2,6 +2,8 @@ class Photo < ApplicationRecord
   extend FriendlyId
   friendly_id :title, use: :slugged
 
+  include ImageUploader[:image]
+
   belongs_to :album
   belongs_to :user
 

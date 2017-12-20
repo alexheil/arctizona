@@ -4,7 +4,7 @@ class CreatePhotos < ActiveRecord::Migration[5.0]
       t.references :user
       t.references :album
       t.string :title, default: ""
-      t.string :photo
+      t.text :image_data
       t.text :description, default: ""
       t.boolean :cover_photo, default: false
       t.boolean :profile_photo, default: false

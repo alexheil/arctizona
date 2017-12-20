@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 20171219191434) do
     t.integer  "user_id"
     t.integer  "album_id"
     t.string   "title",         default: ""
-    t.string   "photo"
+    t.text     "image_data"
     t.text     "description",   default: ""
     t.boolean  "cover_photo",   default: false
     t.boolean  "profile_photo", default: false

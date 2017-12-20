@@ -33,8 +33,9 @@
       <%= f.text_field :title, class: "text-field" %>
     </div>
     <div class="field">
-      <%= f.label :photo, class: "label" %><br />
-      <%= f.file_field :photo %>
+      <%= f.label :image, class: "label" %><br />
+      <%= f.hidden_field :image, value: Photo.new.cached_image_data %>
+      <%= f.file_field :image %>
     </div>
     <div class="field">
       <%= f.label :description, class: "label" %><br />
@@ -51,7 +52,7 @@
   <%= album.photos.count %>
 
   <% album.photos.each do |photo| %>
-    <%= photo.title %>
+    <img src="<%= photo.image_url %>">
   <% end %>
 
 <% end %>
