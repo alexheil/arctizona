@@ -6,8 +6,13 @@ class CreatePhotos < ActiveRecord::Migration[5.0]
       t.string :title, default: ""
       t.text :image_data
       t.text :description, default: ""
-      t.boolean :cover_photo, default: false
-      t.boolean :profile_photo, default: false
+      t.string :camera, default: ""
+      t.string :lens, default: ""
+      t.string :aperture, default: ""
+      t.string :exposure, default: ""
+      t.string :flash, default: ""
+      t.string :focal_length, default: ""
+      t.string :iso, default: ""
       t.string :slug
 
       t.timestamps

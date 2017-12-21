@@ -55,7 +55,7 @@ class Users::PhotosController < ApplicationController
     end
 
     def photo_params
-      params.require(:photo).permit(:title, :image, :remove_image, :description, :cover_photo, :profile_photo)
+      params.require(:photo).permit(:title, :image, :remove_image, :description, :camera, :lens, :aperture, :exposure, :flash, :focal_length, :iso)
     end
 
 end

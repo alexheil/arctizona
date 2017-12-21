@@ -41,11 +41,6 @@
       <%= f.label :description, class: "label" %><br />
       <%= f.text_area :description, class: "text-area" %>
     </div>
-    <%= f.label :cover_photo %>
-    <%= f.check_box :cover_photo %>
-    <%= f.label :profile_photo %>
-    <%= f.check_box :profile_photo %><br />
-
     <%= f.submit "Create photo", data: { disable_with: 'Creating...' }, class: "submit-button" %>
   <% end %>
 
