@@ -61,7 +61,7 @@ class User < ApplicationRecord
     Vote.find_by(user_id: id, photo_id: photo.id).destroy
   end
 
-  def ote_id(photo)
+  def vote_id(photo)
     Vote.find_by(user_id: id, photo_id: photo.id).id
   end
 
