@@ -4,12 +4,11 @@ class Users::VotesController < ApplicationController
 
   def create
     @vote = Vote.new
-    @user = User.friendly.find(params[:id])
-    @photo = Photo.find(params[:photo_id])
+    @photo = Photo.friendly.find(params[:photo_id])
     @vote.photo_id = @photo.id
-    @vote.producer_id = current_producer.id
+    @vote.user_id = current_user.id
     if @vote.save
-      redirect_to user_path(@user)
+      redirect_to user_path(@photo.user)
       flash[:notice] = "You've successfully added a photo!"
     else
       render 'new'
@@ -18,8 +17,9 @@ class Users::VotesController < ApplicationController
   end
 
   def destroy
-    @photo = Photo.find(params[:photo_id])
+    @photo = Photo.friendly.find(params[:photo_id])
     current_user.unvote(@photo)
+    redirect_to user_path(@photo.user)
   end
 
 end

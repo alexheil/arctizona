@@ -9,16 +9,18 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { sessions: "users/sessions", passwords: "users/passwords", registrations: "users/registrations", confirmations: "users/confirmations",  unlocks: "users/unlocks"}
 
   devise_scope :user do
-    get "sign_out", to: "users/sessions#destroy"
+    get 'sign_out', to: 'users/sessions#destroy'
+    get 'sign_in', to: 'users/sessions#new'
+    get 'register', to: 'users/registrations#new'
   end
 
-  resources :users, controller: 'users/users', only: :show do
+  resources :users, path: '', controller: 'users/users', only: :show do
     resource :profile, controller: 'users/profiles', only: [:edit, :update]
     resource :location, controller: 'users/locations', only: [:edit, :update]
     resource :theme, controller: 'users/themes', only: [:edit, :update]
     resources :albums, controller: 'users/albums', except: :index do
       resources :photos, controller: 'users/photos', except: :index do
-        resources :votes, controller: 'users/votes', only: [:creacte, :destroy]
+        resources :votes, controller: 'users/votes', only: [:create, :destroy]
       end
     end
   end
