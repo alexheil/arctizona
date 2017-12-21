@@ -17,6 +17,7 @@ class User < ApplicationRecord
 
   has_many :albums, dependent: :destroy
   has_many :photos, dependent: :destroy
+  has_many :votes, dependent: :destroy
 
   has_one :profile, dependent: :destroy
   has_one :theme, dependent: :destroy
@@ -50,6 +51,18 @@ class User < ApplicationRecord
 
   def following?(other_user)
     following.include?(other_user)
+  end
+
+  def voted?(photo)
+    Vote.exists? user_id: id, photo_id: photo.id
+  end
+
+  def unvote(photo)
+    Vote.find_by(user_id: id, photo_id: photo.id).destroy
+  end
+
+  def ote_id(photo)
+    Vote.find_by(user_id: id, photo_id: photo.id).id
   end
 
   private

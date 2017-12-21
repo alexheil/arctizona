@@ -7,6 +7,8 @@ class Photo < ApplicationRecord
   belongs_to :album
   belongs_to :user
 
+  has_many :votes, depedent: :destroy
+
   before_save :should_generate_new_friendly_id?, if: :title_changed?
 
   private
