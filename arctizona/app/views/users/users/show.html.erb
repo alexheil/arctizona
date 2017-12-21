@@ -52,7 +52,7 @@
   <%= album.photos.count %>
 
   <% album.photos.each do |photo| %>
-    <img src="<%= photo.image_url %>">
+    <img src="<%= photo.image_url(:thumb) %>">
   <% end %>
 
 <% end %>
