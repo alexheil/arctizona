@@ -16,6 +16,12 @@
   </div>
 <% end %>
 
+<% if @user.albums.any? %>
+  Albums
+<% end %>
+
+
+
 <%= form_for(Album.new, url: user_albums_path(@user)) do |f| %>
   <div class="field">
     <%= f.label :title, class: "label" %><br />
