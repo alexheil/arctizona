@@ -1,0 +1,16 @@
+<header class="wrapper">
+  <div class="header-container">
+    <nav class="nav">
+      <div class="site-title">
+        <%= link_to "Arctizona", root_url %>
+      </div>
+      <ul>
+        <% if user_signed_in? %>
+          <li><%= link_to "Your Page", user_path(current_user) %></li>
+          <li><%= link_to "Sign Out", sign_out_path, class: "nav-links" %></li>
+        <% end %>
+        <li><%= link_to "Discover", "#", class: "nav-links" %></li>
+      </ul>
+    </nav>
+  </div>
+</header>

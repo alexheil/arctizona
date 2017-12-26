@@ -1,11 +1,10 @@
 <div class="back-second"></div>
 <div class="background"></div>
 
-<div><%= link_to "Arctizona", root_url %></div>
 
 <% if user_signed_in? %>
 
-<%= current_user.username %>
+  <%= current_user.username %>
   <% if current_user.profile.first_name.blank? %>
     you have a profile
   <% end %>
