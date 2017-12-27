@@ -133,6 +133,10 @@ a {
   text-align: center;
 }
 
+.tiny-text {
+  font-size: .5em;
+}
+
 .large-text {
   font-size: 2em;
 }
@@ -250,7 +254,12 @@ a {
     float: left;
   }
   .nav-links {
+    @include transition;
     color: #aaa;
+    &:hover {
+      @include transition;
+      color: #7a7a7a;
+    }
   }
   ul {
     margin: 0;
@@ -300,6 +309,55 @@ a {
     color: $black;
     background-color: $white;
   }
+}
+
+.submit-button {
+  @include buttons;
+  width: 100%;
+  padding: 2vh 2vw;
+  border: 2px solid $main-color;
+  color: $main-color;
+  cursor: pointer;
+  &:hover {
+    color: $white;
+    background-color: $main-color;
+  }
+}
+
+/* ************** FORMS ************* */
+
+@mixin fields {
+  width: 100%;
+  font-size: 1.25em;
+  font-weight: 100;
+  border-bottom: 1px solid $black;
+  border-top: 1px solid transparent;
+  border-left: 1px solid transparent;
+  border-right: 1px solid transparent;
+  display: inline-block;
+  box-sizing: border-box;
+    &:focus {
+    border: 1px solid $black;
+  }
+}
+
+.text-field {
+  @include fields;
+  padding: 1vh 1vw;
+  background: $white;
+}
+
+.text-area {
+  @include fields;
+  min-width: 100%;
+  max-width: 100%;
+  height: 30vh;
+  padding: 1vh 1vw;
+  background: $white;
+}
+
+.field {
+  margin: 2vh 0;
 }
 
 /* *************** JAVASCRIPT *************** */

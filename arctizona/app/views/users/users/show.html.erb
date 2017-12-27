@@ -1,19 +1,23 @@
 <div class="wrapper">
   <div class="container">
 
-<%= @user.username unless @user.profile.first_name.present? || @user.profile.last_name.present? %> <%= @user.profile.first_name if @user.profile.first_name.present? %> <%= @user.profile.last_name if @user.profile.last_name.present? %> - <%= @user.followers.count %></br>
+<img src="<%= @user.profile.image_url(:thumb) %>"></br>
+
+<div class="large-text five-space">
+  <%= @user.username unless @user.profile.first_name.present? || @user.profile.last_name.present? %> <%= @user.profile.first_name if @user.profile.first_name.present? %> <%= @user.profile.last_name if @user.profile.last_name.present? %><span class="tiny-text"> - <%= @user.followers.count %> followers</span>
+</div>
 
 <% if user_signed_in? && current_user != @user %>
   <div>
     <% if current_user.following?(@user) %>
       <%= form_for(current_user.active_relationships.find_by(followed_id: @user.id),
                html: { method: :delete }) do |f| %>
-        <%= f.submit "Unfollow" %>
+        <%= f.submit "Unfollow", class: "submit-button" %>
       <% end %>
     <% else %>
       <%= form_for(current_user.active_relationships.build) do |f| %>
         <div><%= hidden_field_tag :followed_id, @user.id %></div>
-        <%= f.submit "Follow" %>
+        <%= f.submit "Follow", class: "submit-button" %>
       <% end %>
     <% end %>
   </div>
@@ -37,81 +41,86 @@
         <%= render 'partials/errors/profile_errors' %>
         <div class="field">
           <%= f.label :first_name %><br />
-          <%= f.text_field :first_name %>
+          <%= f.text_field :first_name, class: "text-field" %>
         </div>
         <div class="field">
           <%= f.label :last_name %><br />
-          <%= f.text_field :last_name %>
+          <%= f.text_field :last_name, class: "text-field" %>
+        </div>
+        <div class="field">
+          <%= f.label :image %><br />
+          <%= f.hidden_field :image, value: Photo.new.cached_image_data %>
+          <%= f.file_field :image %>
         </div>
         <div class="field">
           <%= f.label :age %><br />
-          <%= f.text_field :age %>
+          <%= f.text_field :age, class: "text-field" %>
         </div>
 
         <%= fields_for :location, @location do |u| %>
           <div class="field">
             <%= u.label :city %><br />
-            <%= u.text_field :city %>
+            <%= u.text_field :city, class: "text-field" %>
           </div>
           <div class="field">
             <%= u.label :state %><br />
-            <%= u.text_field :state %>
+            <%= u.text_field :state, class: "text-field" %>
           </div>
           <div class="field">
             <%= u.label :country %><br />
-            <%= u.text_field :country %>
+            <%= u.text_field :country, class: "text-field" %>
           </div>
         <% end %>
 
         <div class="field">
           <%= f.label :website %><br />
-          <%= f.text_field :website %>
+          <%= f.text_field :website, class: "text-field" %>
         </div>
         <div class="field">
           <%= f.label :facebook_handle %><br />
-          <%= f.text_field :facebook_handle %>
+          <%= f.text_field :facebook_handle, class: "text-field" %>
         </div>
         <div class="field">
           <%= f.label :facebook_url %><br />
-          <%= f.text_field :facebook_url %>
+          <%= f.text_field :facebook_url, class: "text-field" %>
         </div>
         <div class="field">
           <%= f.label :twitter_handle %><br />
-          <%= f.text_field :twitter_handle %>
+          <%= f.text_field :twitter_handle, class: "text-field" %>
         </div>
         <div class="field">
           <%= f.label :twitter_url %><br />
-          <%= f.text_field :twitter_url %>
+          <%= f.text_field :twitter_url, class: "text-field" %>
         </div>
         <div class="field">
           <%= f.label :instagram_handle %><br />
-          <%= f.text_field :instagram_handle %>
+          <%= f.text_field :instagram_handle, class: "text-field" %>
         </div>
         <div class="field">
           <%= f.label :instagram_url %><br />
-          <%= f.text_field :instagram_url %>
+          <%= f.text_field :instagram_url, class: "text-field" %>
         </div>
         <div class="field">
           <%= f.label :biography %><br />
-          <%= f.text_area :biography %>
+          <%= f.text_area :biography, class: "text-area" %>
         </div>
 
           <%= fields_for :theme, @theme do |u| %>
             <div class="field">
               <%= u.label :main_color %><br />
-              <%= u.text_field :main_color %>
+              <%= u.text_field :main_color, class: "text-field" %>
             </div>
             <div class="field">
               <%= u.label :text_color %><br />
-              <%= u.text_field :text_color %>
+              <%= u.text_field :text_color, class: "text-field" %>
             </div>
             <div class="field">
               <%= u.label :background_color %><br />
-              <%= u.text_field :background_color %>
+              <%= u.text_field :background_color, class: "text-field" %>
             </div>
             <div class="field">
               <%= u.label :link_color %><br />
-              <%= u.text_field :link_color %>
+              <%= u.text_field :link_color, class: "text-field" %>
             </div>
           <% end %>
 
