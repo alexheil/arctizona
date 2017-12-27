@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 20171221200623) do
     t.integer  "user_id"
     t.string   "first_name",       default: ""
     t.string   "last_name",        default: ""
+    t.text     "image_data"
     t.integer  "age"
     t.string   "website",          default: ""
     t.string   "facebook_handle",  default: ""

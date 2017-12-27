@@ -4,6 +4,7 @@ class CreateProfiles < ActiveRecord::Migration[5.0]
       t.references :user
       t.string :first_name, default: ""
       t.string :last_name, default: ""
+      t.text :image_data
       t.integer :age, default: ""
       t.string :website, default: ""
       t.string :facebook_handle, default: ""

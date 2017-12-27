@@ -1,4 +1,4 @@
-<%= @user.username %> - <%= @user.followers.count %>
+<%= @user.username unless @user.profile.first_name.present? || @user.profile.last_name.present? %> <%= @user.profile.first_name if @user.profile.first_name.present? %> <%= @user.profile.last_name if @user.profile.last_name.present? %> - <%= @user.followers.count %></br>
 
 <% if user_signed_in? && current_user != @user %>
   <div>
@@ -16,9 +16,73 @@
   </div>
 <% end %>
 
-<% if @user.albums.any? %>
-  Albums
-<% end %>
+
+
+<aside class="sidebar">
+  <div class="one-space">
+    <%= "Age: " + @user.profile.age.to_s if @user.profile.age.present? %>
+  </div>
+  <div class="one-space">
+    <%= link_to "Website", @user.profile.website if @user.profile.website.present? %>
+  </div>
+
+  <% if user_signed_in? && current_user == @user %>
+    <%= form_for(@profile, url: user_profile_path(@user)) do |f| %>
+      <%= render 'partials/errors/profile_errors' %>
+      <div class="field">
+        <%= f.label :first_name %><br />
+        <%= f.text_field :first_name %>
+      </div>
+      <div class="field">
+        <%= f.label :last_name %><br />
+        <%= f.text_field :last_name %>
+      </div>
+      <div class="field">
+        <%= f.label :age %><br />
+        <%= f.text_field :age %>
+      </div>
+      <div class="field">
+        <%= f.label :website %><br />
+        <%= f.text_field :website %>
+      </div>
+      <div class="field">
+        <%= f.label :facebook_handle %><br />
+        <%= f.text_field :facebook_handle %>
+      </div>
+      <div class="field">
+        <%= f.label :facebook_url %><br />
+        <%= f.text_field :facebook_url %>
+      </div>
+      <div class="field">
+        <%= f.label :twitter_handle %><br />
+        <%= f.text_field :twitter_handle %>
+      </div>
+      <div class="field">
+        <%= f.label :twitter_url %><br />
+        <%= f.text_field :twitter_url %>
+      </div>
+      <div class="field">
+        <%= f.label :instagram_handle %><br />
+        <%= f.text_field :instagram_handle %>
+      </div>
+      <div class="field">
+        <%= f.label :instagram_url %><br />
+        <%= f.text_field :instagram_url %>
+      </div>
+      <div class="field">
+        <%= f.label :instagram_url %><br />
+        <%= f.text_area :instagram_url %>
+      </div>
+
+       <%= f.submit "Update profile", data: { disable_with: 'Updating...' } %>
+    <% end %>
+  <% end %>
+
+</aside>
+
+<main class="content">
+  heyyyy
+</main>
 
 
 

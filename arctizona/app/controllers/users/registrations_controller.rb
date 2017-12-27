@@ -42,7 +42,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   private
 
     def profile_params
-      params.permit(:biography, :first_name, :last_name, :website, :facebook_handle, :facebook_url, :twitter_handle, :twitter_url, :instagram_handle, :instagram_url, :age)
+      params.permit(:biography, :first_name, :last_name, :website, :facebook_handle, :facebook_url, :twitter_handle, :twitter_url, :instagram_handle, :instagram_url, :age, :image, :remove_image)
     end
 
     def location_params

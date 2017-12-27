@@ -21,6 +21,12 @@
   </div>
 </header>
 
+<% if user_signed_in? %>
+<% if current_user.profile.first_name.blank? %>
+  hey
+<% end %>
+<% end %>
+
 <main class="wrapper ten-space center white">
   <div class="mini-container">
     <div class="large-text">
