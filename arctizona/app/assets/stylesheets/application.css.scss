@@ -117,7 +117,8 @@ a {
 
 .content {
   margin: 2vh 0;
-  width: 68%;
+  width: 65%;
+  margin-left: 4%;
   display: inline-block;
   vertical-align: top;
 }
@@ -298,6 +299,39 @@ a {
   &:hover {
     color: $black;
     background-color: $white;
+  }
+}
+
+/* *************** JAVASCRIPT *************** */
+
+#profile-form {
+  display: none;
+}
+
+#edit-profile {
+  @include buttons;
+  width: 100%;
+  padding: 2vh 2vw;
+  border: 2px solid $main-color;
+  color: $main-color;
+  cursor: pointer;
+  &:hover {
+    color: $white;
+    background-color: $main-color;
+  }
+}
+
+#close-profile {
+  @include buttons;
+  display: none;
+  width: 100%;
+  padding: 2vh 2vw;
+  border: 2px solid $main-color;
+  color: $main-color;
+  cursor: pointer;
+  &:hover {
+    color: $white;
+    background-color: $main-color;
   }
 }
 

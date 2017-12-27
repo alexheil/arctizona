@@ -8,8 +8,8 @@ class Users::ProfilesController < ApplicationController
     @profile = @user.profile
     @location = @user.location
     @theme = @user.theme
-    #@location.update_attributes(location_params)
-    #@theme.update_attributes(theme_params)
+    @location.update_attributes(location_params)
+    @theme.update_attributes(theme_params)
     if @profile.update_attributes(profile_params)
       flash[:notice] = "You've successfully updated your profile!"
       redirect_to current_user
