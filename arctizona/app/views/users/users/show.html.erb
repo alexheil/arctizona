@@ -1,7 +1,7 @@
 <div class="wrapper">
   <div class="container">
 
-<div class="nameplate">
+<div class="nameplate border-bottom">
   <div class="first-column">
 
     <% if user_signed_in? && current_user != @user %>
@@ -28,7 +28,7 @@
   </div>
 
   <div class="second-column">
-    <div class="large-text">
+    <div class="large-text mobile-two-space">
       <%= @user.username unless @user.profile.first_name.present? || @user.profile.last_name.present? %> <%= @user.profile.first_name if @user.profile.first_name.present? %> <%= @user.profile.last_name if @user.profile.last_name.present? %><span class="tiny-text"> - <%= @user.followers.count %> followers</span>
     </div>
 
@@ -65,55 +65,91 @@
 
 </div>
 
-<main class="one-space">
-  heyyyy
+<div class="border-bottom">
+  <% if @user.albums.any? %>
+    <div id="albums-tab" class="two-column center tab">
+      Albums
+    </div>
+    <div id="feed-tab" class="two-column center tab">
+      Feed
+    </div>
+  <% else %>
+    <div class="nameplate center">
+      Feed
+    </div>
+  <% end %>
+</div>
+
+<main class="five-space">
+
+  <% if @user.albums.any? %>
+    <div id="albums-container">
+      <% @user.albums.each do |album| %>
+      <div class="three-column">
+        <% album.photos.take(1).each do |photo| %>
+        <img class="thumbnail-image-three" src="<%= photo.image_url(:thumb) %>">
+        <% end %>
+      </div>
+      <% end %>
+    </div>
+
+    <div id="feed-container">
+      FEEEEEED!!!!!!!!!!!
+    </div>
+  <% else %>
+    FEEED!!!!!
+  <% end %>
+
 </main>
 
 
+<% if user_signed_in? && current_user == @user %>
 
-<%= form_for(Album.new, url: user_albums_path(@user)) do |f| %>
-  <div class="field">
-    <%= f.label :title, class: "label" %><br />
-    <%= f.text_field :title, class: "text-field" %>
-  </div>
-  <%= f.submit "Create photo album", data: { disable_with: 'Creating...' }, class: "submit-button" %>
-<% end %>
-<%= @user.albums.count %> - <%= @user.photos.count %>
-<% @user.albums.each do |album| %>
-  <%= album.title %> - <%= album.id %>
-
-  <%= form_for(Photo.new, url: user_album_photos_path(@user, album)) do |f| %>
+  <%= form_for(Album.new, url: user_albums_path(@user)) do |f| %>
     <div class="field">
       <%= f.label :title, class: "label" %><br />
       <%= f.text_field :title, class: "text-field" %>
     </div>
-    <div class="field">
-      <%= f.label :image, class: "label" %><br />
-      <%= f.hidden_field :image, value: Photo.new.cached_image_data %>
-      <%= f.file_field :image %>
-    </div>
-    <div class="field">
-      <%= f.label :description, class: "label" %><br />
-      <%= f.text_area :description, class: "text-area" %>
-    </div>
-    <%= f.submit "Create photo", data: { disable_with: 'Creating...' }, class: "submit-button" %>
+    <%= f.submit "Create photo album", data: { disable_with: 'Creating...' }, class: "submit-button" %>
   <% end %>
+  <%= @user.albums.count %> - <%= @user.photos.count %>
+  <% @user.albums.each do |album| %>
+    <%= album.title %> - <%= album.id %>
 
-  <%= album.photos.count %>
-
-  <% album.photos.each do |photo| %>
-    <%= photo.title %></br>
-    <img src="<%= photo.image_url(:thumb) %>">
-
-    <% if user_signed_in? && current_user.voted?(photo) %>
-      <%= button_to "−", user_album_photo_vote_path(@user, album, photo, current_user.vote_id(photo)), method: :delete, data: { disable_with: '...' }, class: "linwood" %>
-    <% else %>
-      <%= form_for(Vote.new, url: user_album_photo_votes_path(@user, album, photo)) do |f| %>
-        <%= f.submit "+", data: { disable_with: '...' }, class: "linwood" %>
-      <% end %>
+    <%= form_for(Photo.new, url: user_album_photos_path(@user, album)) do |f| %>
+      <div class="field">
+        <%= f.label :title, class: "label" %><br />
+        <%= f.text_field :title, class: "text-field" %>
+      </div>
+      <div class="field">
+        <%= f.label :image, class: "label" %><br />
+        <%= f.hidden_field :image, value: Photo.new.cached_image_data %>
+        <%= f.file_field :image %>
+      </div>
+      <div class="field">
+        <%= f.label :description, class: "label" %><br />
+        <%= f.text_area :description, class: "text-area" %>
+      </div>
+      <%= f.submit "Create photo", data: { disable_with: 'Creating...' }, class: "submit-button" %>
     <% end %>
 
-    <%= photo.votes.count %>
+    <%= album.photos.count %>
+
+    <% album.photos.each do |photo| %>
+      <%= photo.title %></br>
+      <img src="<%= photo.image_url(:thumb) %>">
+
+      <% if user_signed_in? && current_user.voted?(photo) %>
+        <%= button_to "−", user_album_photo_vote_path(@user, album, photo, current_user.vote_id(photo)), method: :delete, data: { disable_with: '...' }, class: "linwood" %>
+      <% else %>
+        <%= form_for(Vote.new, url: user_album_photo_votes_path(@user, album, photo)) do |f| %>
+          <%= f.submit "+", data: { disable_with: '...' }, class: "linwood" %>
+        <% end %>
+      <% end %>
+
+      <%= photo.votes.count %>
+
+    <% end %>
 
   <% end %>
 
