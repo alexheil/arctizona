@@ -123,6 +123,40 @@ a {
   vertical-align: top;
 }
 
+.first-column {
+  margin: 0;
+  width: 30vh;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.second-column {
+  margin: 0 0 0 5vw;
+  width: 64%;
+  height: 30vh;
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.thumbnail-image {
+  height: 30vh;
+  width: 30vh;
+  border-radius: 4px;
+  object-fit: cover;
+  display: block;
+  -webkit-backface-visibility: hidden;
+  -webkit-transition: .3s ease-in-out;
+  -moz-transition: .3s ease-in-out;
+  -o-transition: .3s ease-in-out;
+  &:hover {
+    -webkit-transition: .3s ease-in-out;
+    -moz-transition: .3s ease-in-out;
+    -o-transition: .3s ease-in-out;
+    opacity: .75;
+  }
+}
+
 /* ************** FONT AND SPACING ************** */
 
 .white {
@@ -139,6 +173,10 @@ a {
 
 .large-text {
   font-size: 2em;
+}
+
+.nameplate {
+  margin: 5vh 0;
 }
 
 .one-space {
