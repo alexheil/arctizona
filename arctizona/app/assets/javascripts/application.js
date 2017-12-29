@@ -63,6 +63,3 @@ var userTabs = function() {
 
 $(document).ready(userTabs);
 $(document).on('turbolinks:load', userTabs);
-
-
-
