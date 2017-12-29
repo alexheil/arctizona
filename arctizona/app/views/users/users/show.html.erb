@@ -85,9 +85,14 @@
   <% if @user.albums.any? %>
     <div id="albums-container">
       <% @user.albums.each do |album| %>
-      <div class="three-column">
+      <div class="three-column relative">
         <% album.photos.take(1).each do |photo| %>
-        <img class="thumbnail-image-three" src="<%= photo.image_url(:thumb) %>">
+        <%= link_to(user_album_path(@user, album)) do %>
+          <img class="thumbnail-image-three" src="<%= photo.image_url(:thumb) %>">
+        <% end %>
+        <div class="bottom-left">
+          <%= link_to album.title, user_album_path(@user, album) %>
+        </div>
         <% end %>
       </div>
       <% end %>
@@ -265,8 +270,12 @@
           </div>
         </div>
         <div class="field">
-          <%= f.label :twitter_url %><br />
-          <%= f.text_field :twitter_url, class: "text-field" %>
+          <div class="one-thirds">
+            <%= f.label :twitter_url %><br />
+          </div>
+          <div class="two-thirds">
+            <%= f.text_field :twitter_url, class: "text-field" %>
+          </div>
         </div>
         <div class="field">
           <div class="one-thirds">

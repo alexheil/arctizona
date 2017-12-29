@@ -1,0 +1,13 @@
+<% if @user && @user.theme.main_color.present? && @user.theme.main_color != "#5F00D0" %>
+  <meta name="theme-color" content="<%= @user.theme.main_color %>" />
+<% end %>
+
+<style>
+  a {
+    color: <%= @user.theme.link_color %>;
+  }
+  #edit-profile {
+    color: <%= @user.theme.link_color %>;
+    border: 2px solid <%= @user.theme.link_color %>;
+  }
+</style>
