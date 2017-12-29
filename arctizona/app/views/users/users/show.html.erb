@@ -335,6 +335,14 @@
                 <%= u.text_field :link_color, class: "text-field" %>
               </div>
             </div>
+            <div class="field">
+              <div class="one-thirds">
+                <%= u.label :hover_color %>
+              </div>
+              <div class="two-thirds">
+                <%= u.text_field :hover_color, class: "text-field" %>
+              </div>
+            </div>
           <% end %>
 
          <%= f.submit "Update profile", data: { disable_with: 'Updating...' }, class: "submit-button" %>

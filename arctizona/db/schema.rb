@@ -88,6 +88,7 @@ ActiveRecord::Schema.define(version: 20171221200623) do
     t.string   "text_color",       default: ""
     t.string   "background_color", default: ""
     t.string   "link_color",       default: ""
+    t.string   "hover_color",      default: ""
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
     t.index ["user_id"], name: "index_themes_on_user_id"
