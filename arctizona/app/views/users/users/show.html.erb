@@ -350,3 +350,24 @@
     </div>
   </div>
 <% end %>
+
+<% if user_signed_in? && current_user == @user %>
+
+  <div id="back"></div>
+  <div id="album-form">
+    <div class="profile-form-inside">
+      <div id="close-profile" class="one-space">
+        Close
+      </div>
+
+      <%= form_for(Album.new, url: user_albums_path(@user)) do |f| %>
+        <div class="field">
+          <%= f.label :title, class: "label" %><br />
+          <%= f.text_field :title, class: "text-field" %>
+        </div>
+        <%= f.submit "Create photo album", data: { disable_with: 'Creating...' }, class: "submit-button" %>
+      <% end %>
+
+    </div>
+  </div>
+<% end %>

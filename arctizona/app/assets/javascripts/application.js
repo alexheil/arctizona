@@ -13,8 +13,17 @@ var editProfile = function() {
     $(".wrapper").addClass("blur");
   });
 
+  $('#create-album').click(function() {
+    $('#album-form').show(300);
+    $('#close-profile').show();
+    $('#create-album').hide();
+    $('#back').show();
+    $(".wrapper").addClass("blur");
+  });
+
   $('#close-profile').click(function() {
     $('#profile-form').hide(300);
+    $('#album-form').hide(300);
     $('#close-profile').hide();
     $('#edit-profile').show();
     $('#back').hide();
@@ -23,18 +32,11 @@ var editProfile = function() {
 
   $('#back').click(function() {
     $('#profile-form').hide(300);
+    $('#album-form').hide(300);
     $('#close-profile').hide();
     $('#edit-profile').show();
     $('#back').hide();
     $(".wrapper").removeClass("blur");
-  });
-
-  $('#close').click(function() {
-    $('#profile-form').hide(300);
-    $('#close-profile').hide();
-    $('#edit-profile').show();
-    $('#back').hide();
-    $('.wrapper').removeClass('blur');
   });
 
 };

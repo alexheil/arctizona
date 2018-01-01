@@ -494,6 +494,19 @@ a {
   }
 }
 
+#create-album {
+  @include buttons;
+  width: 100%;
+  padding: 2vh 2vw;
+  border: 2px solid $main-color;
+  color: $main-color;
+  cursor: pointer;
+  &:hover {
+    color: $white;
+    background-color: $main-color;
+  }
+}
+
 #close-profile {
   @include buttons;
   display: none;
