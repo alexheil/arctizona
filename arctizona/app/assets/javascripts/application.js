@@ -15,7 +15,7 @@ var editProfile = function() {
 
   $('#create-album').click(function() {
     $('#album-form').show(300);
-    $('#close-profile').show();
+    $('#close-album').show();
     $('#create-album').hide();
     $('#back').show();
     $(".wrapper").addClass("blur");
@@ -23,9 +23,16 @@ var editProfile = function() {
 
   $('#close-profile').click(function() {
     $('#profile-form').hide(300);
-    $('#album-form').hide(300);
     $('#close-profile').hide();
     $('#edit-profile').show();
+    $('#back').hide();
+    $(".wrapper").removeClass("blur");
+  });
+
+  $('#close-album').click(function() {
+    $('#album-form').hide(300);
+    $('#close-album').hide();
+    $('#create-album').show();
     $('#back').hide();
     $(".wrapper").removeClass("blur");
   });
@@ -34,6 +41,7 @@ var editProfile = function() {
     $('#profile-form').hide(300);
     $('#album-form').hide(300);
     $('#close-profile').hide();
+    $('#create-album').show();
     $('#edit-profile').show();
     $('#back').hide();
     $(".wrapper").removeClass("blur");
