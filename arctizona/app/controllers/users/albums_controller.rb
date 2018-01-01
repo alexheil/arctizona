@@ -6,6 +6,8 @@ class Users::AlbumsController < ApplicationController
   before_action :set_user, except: :show
 
   def show
+    @user = User.friendly.find(params[:user_id])
+    @album = Album.friendly.find(params[:id])
   end
 
   def new
@@ -53,7 +55,7 @@ class Users::AlbumsController < ApplicationController
     end
 
     def album_params
-      params.require(:album).permit(:title)
+      params.require(:album).permit(:title, :description)
     end
 
 end

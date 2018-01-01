@@ -6,6 +6,7 @@ class Users::UsersController < ApplicationController
       @profile = current_user.profile
       @location = current_user.location
       @theme = current_user.theme
+      @album = Album.new
     end
   end
   
