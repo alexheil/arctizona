@@ -4,12 +4,16 @@ class Users::VotesController < ApplicationController
 
   def create
     @vote = Vote.new
+    @user = User.friendly.find(params[:user_id])
+    @album = Album.friendly.find(params[:album_id])
     @photo = Photo.friendly.find(params[:photo_id])
     @vote.photo_id = @photo.id
     @vote.user_id = current_user.id
     if @vote.save
-      redirect_to user_path(@photo.user)
-      flash[:notice] = "You've successfully added a photo!"
+      respond_to do |format|
+        format.html { redirect_to (:back) }
+        format.js { render :action => "votes" }
+      end
     else
       render 'new'
       flash.now[:alert] = "You've failed!"
@@ -17,9 +21,14 @@ class Users::VotesController < ApplicationController
   end
 
   def destroy
+    @user = User.friendly.find(params[:user_id])
+    @album = Album.friendly.find(params[:album_id])
     @photo = Photo.friendly.find(params[:photo_id])
     current_user.unvote(@photo)
-    redirect_to user_path(@photo.user)
+    respond_to do |format|
+      format.html { redirect_to (:back) }
+      format.js { render :action => "votes" }
+    end
   end
 
 end

@@ -8,15 +8,18 @@
 
 <div class="wrapper">
   <div class="container">
+
+
     <div class="nameplate border-bottom medium-text">
-      <% if user_signed_in? && current_user.voted?(@photo) %>
-        <%= button_to "−", user_album_photo_vote_path(@user, @album, @photo, current_user.vote_id(@photo)), method: :delete, data: { disable_with: '...' }, class: "vote" %>
-      <% else %>
-        <%= form_for(Vote.new, url: user_album_photo_votes_path(@user, @album, @photo)) do |f| %>
-          <%= f.submit "+", data: { disable_with: '...' }, class: "vote" %>
-        <% end %>
-      <% end %>
-      <%= @photo.votes.count %> - <%= @photo.title %>
+      <div class="vote_button">
+        <%= render 'users/partials/votes/vote_button' %>
+      </div>
+      <span class="vote_count"><%= render 'users/partials/votes/vote_count' %></span> - <%= @photo.title %>
+    </div>
+
+
+    <div class="nameplate border-bottom">
+      
     </div>
   </div>
 </div>
