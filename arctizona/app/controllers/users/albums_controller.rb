@@ -8,6 +8,12 @@ class Users::AlbumsController < ApplicationController
   def show
     @user = User.friendly.find(params[:user_id])
     @album = Album.friendly.find(params[:id])
+    if user_signed_in? && current_user == @user
+      @profile = current_user.profile
+      @location = current_user.location
+      @theme = current_user.theme
+      @photo = Photo.new
+    end
   end
 
   def new

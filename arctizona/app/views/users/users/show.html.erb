@@ -1,182 +1,72 @@
 <div class="wrapper">
   <div class="container">
 
-<div class="nameplate border-bottom">
-  <div class="first-column">
+    <%= render 'users/partials/nameplate' %>
 
-    <% if user_signed_in? && current_user != @user %>
-      <div class="five-space-bottom">
-        <% if current_user.following?(@user) %>
-          <%= form_for(current_user.active_relationships.find_by(followed_id: @user.id),
-                   html: { method: :delete }) do |f| %>
-            <%= f.submit "Unfollow", class: "submit-button" %>
-          <% end %>
-        <% else %>
-          <%= form_for(current_user.active_relationships.build) do |f| %>
-            <div><%= hidden_field_tag :followed_id, @user.id %></div>
-            <%= f.submit "Follow", class: "submit-button" %>
-          <% end %>
-        <% end %>
-      </div>
-    <% elsif user_signed_in? == false %>
-      <div class="five-space-bottom">
-        <%= link_to "Follow", sign_in_path, class: "submit-button" %>
+    <% if user_signed_in? && current_user == @user %>
+      <div class="nameplate border-bottom">
+        <div class="first-column">
+          <div id="edit-profile">
+            Edit profile
+          </div>
+        </div>
+
+        <div class="second-column">
+          <div id="create-album">
+            Create album
+          </div>
+        </div>
       </div>
     <% end %>
 
-    <img class="thumbnail-image" src="<%= @user.profile.image_url(:thumb) %>">
-  </div>
-
-  <div class="second-column">
-    <div class="large-text mobile-two-space">
-      <%= @user.username unless @user.profile.first_name.present? || @user.profile.last_name.present? %> <%= @user.profile.first_name if @user.profile.first_name.present? %> <%= @user.profile.last_name if @user.profile.last_name.present? %><span class="tiny-text"> - <%= @user.followers.count %> followers</span>
-    </div>
-
-    <div class="one-space">
-      <div class="one-space">
-        <%= @user.profile.age.to_s if @user.profile.age.present? %><%= " | " if @user.profile.age.present? %>
-        <%= @user.location.city if @user.location.city.present? %><%= ", " + @user.location.state if @user.location.state.present? %><%= ", " + @user.location.country if @user.location.country.present? %>
-      </div>
-      <div class="one-space">
-        <%= link_to "Website", @user.profile.website if @user.profile.website.present? %> <%= "|" if @user.profile.website.present? && (@user.profile.facebook_url.present? || @user.profile.twitter_url.present? || @user.profile.instagram_url.present?) %> <%= link_to @user.profile.facebook_handle, @user.profile.facebook_url, class: "facebook" if @user.profile.facebook_url.present? %> <%= "|" if @user.profile.facebook_url.present? && @user.profile.twitter_url.present? %> <%= link_to @user.profile.twitter_handle, @user.profile.twitter_url, class: "twitter" if @user.profile.twitter_url.present? %> <%= "|" if (@user.profile.twitter_url.present? || @user.profile.facebook_url.present?) && @user.profile.instagram_url.present? %> <%= link_to @user.profile.instagram_handle, @user.profile.instagram_url, class: "instagram" if @user.profile.instagram_url.present? %>
-      </div>
-      <div class="one-space">
-        <%= @user.profile.biography if @user.profile.biography.present? %>
-      </div>
-    </div>
-
-  </div>
-
-  <% if user_signed_in? && current_user == @user %>
-    <div class="five-space-top">
-      <div class="first-column">
-        <div id="edit-profile">
-          Edit profile
+    <div class="border-bottom">
+      <% if @user.albums.any? %>
+        <div id="albums-tab" class="two-column center tab">
+          Albums
         </div>
-      </div>
-
-      <div class="second-column">
-        <div id="create-album">
-          Create album
+        <div id="feed-tab" class="two-column center tab">
+          Feed
         </div>
-      </div>
-    </div>
-  <% end %>
-
-</div>
-
-<% if user_signed_in? && current_user == @user %>
-  <div class="nameplate border-bottom">
-    <div class="five-space-top">
-      <div class="first-column">
-        <div id="edit-profile">
-          Edit profile
-        </div>
-      </div>
-
-      <div class="second-column">
-        <div id="create-album">
-          Create album
-        </div>
-      </div>
-    </div>
-  </div>
-<% end %>
-
-<div class="border-bottom">
-  <% if @user.albums.any? %>
-    <div id="albums-tab" class="two-column center tab">
-      Albums
-    </div>
-    <div id="feed-tab" class="two-column center tab">
-      Feed
-    </div>
-  <% else %>
-    <div class="nameplate center">
-      Feed
-    </div>
-  <% end %>
-</div>
-
-<main class="five-space">
-
-  <% if @user.albums.any? %>
-    <div id="albums-container">
-      <% @user.albums.each do |album| %>
-      <div class="three-column relative">
-        <% album.photos.take(1).each do |photo| %>
-        <%= link_to(user_album_path(@user, album)) do %>
-          <img class="thumbnail-image-three" src="<%= photo.image_url(:thumb) %>">
-        <% end %>
-        <div class="bottom-left">
-          <%= link_to album.title, user_album_path(@user, album) %>
-        </div>
-        <% end %>
-      </div>
-      <% end %>
-    </div>
-
-    <div id="feed-container">
-      FEEEEEED!!!!!!!!!!!
-    </div>
-  <% else %>
-    FEEED!!!!!
-  <% end %>
-
-</main>
-
-
-<% if user_signed_in? && current_user == @user %>
-
-  <%= form_for(Album.new, url: user_albums_path(@user)) do |f| %>
-    <div class="field">
-      <%= f.label :title, class: "label" %><br />
-      <%= f.text_field :title, class: "text-field" %>
-    </div>
-    <%= f.submit "Create photo album", data: { disable_with: 'Creating...' }, class: "submit-button" %>
-  <% end %>
-  <%= @user.albums.count %> - <%= @user.photos.count %>
-  <% @user.albums.each do |album| %>
-    <%= album.title %> - <%= album.id %>
-
-    <%= form_for(Photo.new, url: user_album_photos_path(@user, album)) do |f| %>
-      <div class="field">
-        <%= f.label :title, class: "label" %><br />
-        <%= f.text_field :title, class: "text-field" %>
-      </div>
-      <div class="field">
-        <%= f.label :image, class: "label" %><br />
-        <%= f.hidden_field :image, value: Photo.new.cached_image_data %>
-        <%= f.file_field :image %>
-      </div>
-      <div class="field">
-        <%= f.label :description, class: "label" %><br />
-        <%= f.text_area :description, class: "text-area" %>
-      </div>
-      <%= f.submit "Create photo", data: { disable_with: 'Creating...' }, class: "submit-button" %>
-    <% end %>
-
-    <%= album.photos.count %>
-
-    <% album.photos.each do |photo| %>
-      <%= photo.title %></br>
-      <img src="<%= photo.image_url(:thumb) %>">
-
-      <% if user_signed_in? && current_user.voted?(photo) %>
-        <%= button_to "−", user_album_photo_vote_path(@user, album, photo, current_user.vote_id(photo)), method: :delete, data: { disable_with: '...' }, class: "linwood" %>
       <% else %>
-        <%= form_for(Vote.new, url: user_album_photo_votes_path(@user, album, photo)) do |f| %>
-          <%= f.submit "+", data: { disable_with: '...' }, class: "linwood" %>
-        <% end %>
+        <div class="nameplate center">
+          Feed
+        </div>
+      <% end %>
+    </div>
+
+    <main class="five-space">
+
+      <% if @user.albums.any? %>
+        <div id="albums-container">
+          <% @user.albums.each do |album| %>
+          <div class="one-half relative">
+            <% album.photos.take(1).each do |photo| %>
+              <%= link_to(user_album_path(@user, album)) do %>
+                <img class="thumbnail-image-large" srcset="<%= photo.image_url(:thumb) %>" width="100%" height="auto" />
+              <% end %>
+            <% end %>
+          </div>
+
+          <div class="one-half">
+            <div class="medium-text one-space">
+              <%= link_to album.title, user_album_path(@user, album) %>
+            </div>
+            <div class="one-space">
+              <%= album.description %>
+            </div>
+          </div>
+
+          <% end %>
+        </div>
+
+        <div id="feed-container">
+          FEEEEEED!!!!!!!!!!!
+        </div>
+      <% else %>
+        FEEED!!!!!
       <% end %>
 
-      <%= photo.votes.count %>
-
-    <% end %>
-
-  <% end %>
-
-<% end %>
+    </main>
 
   </div>
 </div>

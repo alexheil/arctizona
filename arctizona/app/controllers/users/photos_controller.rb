@@ -6,6 +6,9 @@ class Users::PhotosController < ApplicationController
   before_action :set_user, except: :show
 
   def show
+    @user = User.friendly.find(params[:user_id])
+    @album = Album.friendly.find(params[:album_id])
+    @photo = Photo.friendly.find(params[:id])
   end
 
   def new
@@ -16,7 +19,7 @@ class Users::PhotosController < ApplicationController
     @photo = @album.photos.build(photo_params)
     @photo.user_id = @user.id
     if @photo.save
-      redirect_to user_path(@user)
+      redirect_to user_album_path(@user, @album)
       flash[:notice] = "You've successfully added a photo!"
     else
       render 'new'

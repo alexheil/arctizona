@@ -172,6 +172,13 @@ a {
   vertical-align: top;
 }
 
+.one-half {
+  margin: 0;
+  width: 49%;
+  display: inline-block;
+  vertical-align: top;
+}
+
 .thumbnail-image {
   height: 30vh;
   width: 30vh;
@@ -193,6 +200,24 @@ a {
 .thumbnail-image-three {
   height: 31.68vw;
   width: 31.68vw;
+  border-radius: 4px;
+  object-fit: cover;
+  display: block;
+  -webkit-backface-visibility: hidden;
+  -webkit-transition: .3s ease-in-out;
+  -moz-transition: .3s ease-in-out;
+  -o-transition: .3s ease-in-out;
+  &:hover {
+    -webkit-transition: .3s ease-in-out;
+    -moz-transition: .3s ease-in-out;
+    -o-transition: .3s ease-in-out;
+    opacity: .75;
+  }
+}
+
+.thumbnail-image-large {
+  height: 45vw;
+  width: 45vw;
   border-radius: 4px;
   object-fit: cover;
   display: block;
@@ -246,6 +271,10 @@ a {
 
 .tiny-text {
   font-size: .5em;
+}
+
+.medium-text {
+  font-size: 1.5em;
 }
 
 .large-text {
