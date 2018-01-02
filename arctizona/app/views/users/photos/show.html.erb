@@ -17,9 +17,69 @@
       <span class="vote_count"><%= render 'users/partials/votes/vote_count' %></span> - <%= @photo.title %>
     </div>
 
+    <% if @photo.camera.present? || @photo.lens.present? || @photo.aperture.present? || @photo.exposure.present? || @photo.flash.present? || @photo.focal_length.present? || @photo.iso.present? %>
+      <div class="nameplate border-bottom">
+        <% if @photo.camera.present? %>
+          <div class="one-space-bottom">
+            <%= link_to @photo.camera, "https://www.amazon.com/s/ref=as_li_ss_tl?url=search-alias=aps&field-keywords=#{@photo.camera}&linkCode=ll2&tag=letlyrics08-20&linkId=293aefe04a0280e01bef782242640c24" %>
+          </div>
+        <% end %>
+        <% if @photo.lens.present? %>
+          <div class="one-sixth">
+            <div class="one-space-bottom">
+              Lens:
+            </div>
+            <%= @photo.lens %>
+          </div>
+        <% end %>
+        <% if @photo.aperture.present? %>
+          <div class="one-sixth">
+            <div class="one-space-bottom">
+              Aperture:
+            </div>
+            <%= @photo.aperture %>
+          </div>
+        <% end %>
+        <% if @photo.exposure.present? %>
+          <div class="one-sixth">
+            <div class="one-space-bottom">
+              Exposure:
+            </div>
+            <%= @photo.exposure %>
+          </div>
+        <% end %>
+        <% if @photo.flash.present? %>
+          <div class="one-sixth">  
+            <div class="one-space-bottom">
+              Flash:
+            </div>
+            <%= @photo.flash %>
+          </div>
+        <% end %>
+        <% if @photo.focal_length.present? %>
+          <div class="one-sixth"> 
+            <div class="one-space-bottom">
+              Focal length:
+            </div>
+            <%= @photo.focal_length %>
+          </div>
+        <% end %>
+        <% if @photo.iso.present? %>
+          <div class="one-sixth">
+            <div class="one-space-bottom">
+              ISO:
+            </div>
+            <%= @photo.iso %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
 
-    <div class="nameplate border-bottom">
-      
-    </div>
+    <% if @photo.description.present? %>
+      <div class="nameplate border-bottom">
+        <%= sanitize(@photo.description) %>
+      </div>
+    <% end %>
+
   </div>
 </div>

@@ -184,6 +184,13 @@ a {
   vertical-align: top;
 }
 
+.one-sixth {
+  margin: 0;
+  width: 16%;
+  display: inline-block;
+  vertical-align: top;
+}
+
 .thumbnail-image {
   height: 30vh;
   width: 30vh;
@@ -235,6 +242,10 @@ a {
 
 .border-bottom {
   border-bottom: 1px solid #ccc;
+}
+
+.border-top {
+  border-top: 1px solid #ccc;
 }
 
 .tab {
@@ -507,6 +518,10 @@ a {
 
 .field {
   margin: 2vh 0;
+}
+
+.field-padding {
+  padding: 2vh 0;
 }
 
 /* ************** PHOTO PAGE *************** */
