@@ -4,6 +4,8 @@ class Photo < ApplicationRecord
 
   include ImageUploader[:image]
 
+  default_scope -> { order('id DESC') }
+
   belongs_to :album
   belongs_to :user
 

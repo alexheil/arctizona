@@ -60,7 +60,9 @@
         </div>
 
         <div id="feed-container">
-          FEEEEEED!!!!!!!!!!!
+          <% @user.feed.each do |photo| %>
+            <%= photo.title %>
+          <% end %>
         </div>
       <% else %>
         FEEED!!!!!
