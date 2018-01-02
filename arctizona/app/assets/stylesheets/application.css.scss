@@ -138,6 +138,11 @@ a {
   vertical-align: top;
 }
 
+.three-column:hover .text-hover{
+  @include transition;
+    opacity: 1;
+}
+
 .height-width-block {
   width: 31.68vw;
   height: 31.68vw;
@@ -252,11 +257,16 @@ a {
   position: relative;
 }
 
-.bottom-left {
+.centered {
   position: absolute;
-  bottom: 0;
-  left: 8px;
-  font-size: 1.25em;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.text-hover {
+  @include transition;
+  opacity: 0;
 }
 
 /* ************** FONT AND SPACING ************** */

@@ -1,1 +1,9 @@
 <%= @photo.title %>
+
+<% if user_signed_in? && current_user.voted?(@photo) %>
+  <%= button_to "−", user_album_photo_vote_path(@user, @album, @photo, current_user.vote_id(@photo)), method: :delete, data: { disable_with: '...' } %>
+<% else %>
+  <%= form_for(Vote.new, url: user_album_photo_votes_path(@user, @album, @photo)) do |f| %>
+    <%= f.submit "+", data: { disable_with: '...' } %>
+  <% end %>
+<% end %>
