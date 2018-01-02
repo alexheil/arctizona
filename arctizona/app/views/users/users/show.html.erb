@@ -61,7 +61,16 @@
 
         <div id="feed-container">
           <% @user.feed.each do |photo| %>
-            <%= photo.title %>
+            <div class="three-column relative">
+              <%= link_to(user_album_photo_path(photo.user, photo.album, photo)) do %>
+                <img class="thumbnail-image-three" src="<%= photo.image_url(:thumb) %>">
+              <% end %>
+              <div class="centered">
+                <div class="text-hover large-text">
+                  +<%= photo.votes.count %>
+                </div>
+              </div>
+            </div>
           <% end %>
         </div>
       <% else %>

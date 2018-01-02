@@ -191,15 +191,6 @@ a {
   object-fit: cover;
   display: block;
   -webkit-backface-visibility: hidden;
-  -webkit-transition: .3s ease-in-out;
-  -moz-transition: .3s ease-in-out;
-  -o-transition: .3s ease-in-out;
-  &:hover {
-    -webkit-transition: .3s ease-in-out;
-    -moz-transition: .3s ease-in-out;
-    -o-transition: .3s ease-in-out;
-    opacity: .75;
-  }
 }
 
 .thumbnail-image-three {
@@ -216,7 +207,7 @@ a {
     -webkit-transition: .3s ease-in-out;
     -moz-transition: .3s ease-in-out;
     -o-transition: .3s ease-in-out;
-    opacity: .75;
+    opacity: .50;
   }
 }
 
@@ -234,7 +225,7 @@ a {
     -webkit-transition: .3s ease-in-out;
     -moz-transition: .3s ease-in-out;
     -o-transition: .3s ease-in-out;
-    opacity: .75;
+    opacity: .50;
   }
 }
 
@@ -516,6 +507,41 @@ a {
 
 .field {
   margin: 2vh 0;
+}
+
+/* ************** PHOTO PAGE *************** */
+
+.dark-background {
+  background: $black;
+}
+
+.big-image {
+  max-width: 100%;
+  margin: 0 auto;
+  border-radius: 4px;
+  display: block;
+  -webkit-backface-visibility: hidden;
+}
+
+.vote {
+  margin: -8px 0 0 0;
+  text-align: center;
+  font-size: 1.25em;
+  font-weight: 300;
+  float: left;
+  border: none;
+  background-color: transparent;
+  color: $main-color;
+  cursor: pointer;
+  -webkit-transition: .3s;
+  -moz-transition: .3s;
+  -o-transition: .3s;
+  &:hover {
+    -webkit-transition: .3s;
+    -moz-transition: .3s;
+    -o-transition: .3s;
+    color: $accent-color1;
+  }
 }
 
 /* *************** JAVASCRIPT *************** */

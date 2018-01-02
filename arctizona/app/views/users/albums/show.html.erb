@@ -33,7 +33,7 @@
           <% end %>
           <div class="centered">
             <div class="text-hover large-text">
-              + <%= photo.votes.count %>
+              +<%= photo.votes.count %>
             </div>
           </div>
         </div>
@@ -44,8 +44,6 @@
 
   </div>
 </div>
-
-
 
 <% if user_signed_in? && current_user == @user %>
 
