@@ -296,6 +296,9 @@ a {
 .one-space {
   margin: 1vh 0;
 }
+.one-space-bottom {
+  margin-bottom: 1vh;
+}
 
 .one-space-top {
   padding-top: 1vh;
@@ -563,7 +566,7 @@ a {
   }
 }
 
-.test {
+.follow {
   text-align: center;
   font-size: 1em;
   font-weight: 100;
@@ -775,8 +778,8 @@ a {
   }
 
   .thumbnail-image {
-    height: 95vw;
-    width: 95vw;
+    height: 96vw;
+    width: 96vw;
   }
 
   .first-column {
@@ -798,6 +801,28 @@ a {
 
   .mobile-two-space {
     margin-top: 2vh;
+  }
+
+  .three-column {
+    width: 49.56%;
+  }
+
+  .thumbnail-image-three {
+    height: 47.28vw;
+    width: 47.28vw;
+  }
+
+}
+
+@media screen and (max-width: 650px) {
+
+  .three-column {
+    width: 100%;
+  }
+
+  .thumbnail-image-three {
+    height: 96vw;
+    width: 96vw;
   }
 
 }

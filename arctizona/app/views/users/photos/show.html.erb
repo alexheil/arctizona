@@ -24,12 +24,12 @@
             <% if current_user.following?(@user) %>
               <%= form_for(current_user.active_relationships.find_by(followed_id: @user.id),
                        html: { method: :delete }) do |f| %>
-                <%= f.submit "Unfollow", class: "test" %>
+                <%= f.submit "Unfollow", class: "follow" %>
               <% end %>
             <% else %>
               <%= form_for(current_user.active_relationships.build) do |f| %>
                 <div><%= hidden_field_tag :followed_id, @user.id %></div>
-                <%= f.submit "Follow", class: "test" %>
+                <%= f.submit "Follow", class: "follow" %>
               <% end %>
             <% end %>
           </div>
@@ -45,7 +45,7 @@
     <% if @photo.camera.present? || @photo.lens.present? || @photo.aperture.present? || @photo.exposure.present? || @photo.flash.present? || @photo.focal_length.present? || @photo.iso.present? %>
       <div class="nameplate border-bottom">
         <% if @photo.camera.present? %>
-          <div class="one-space-bottom">
+          <div class="one-space-bottom medium-text">
             <%= link_to @photo.camera, "https://www.amazon.com/s/ref=as_li_ss_tl?url=search-alias=aps&field-keywords=#{@photo.camera}&linkCode=ll2&tag=letlyrics08-20&linkId=293aefe04a0280e01bef782242640c24" %>
           </div>
         <% end %>

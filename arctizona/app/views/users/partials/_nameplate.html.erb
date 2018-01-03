@@ -21,12 +21,17 @@
       </div>
     <% end %>
 
-    <img class="thumbnail-image" src="<%= @user.profile.image_url(:thumb) %>">
+    <% if @user.profile.image_url(:thumb).present? %>
+      <img class="thumbnail-image" src="<%= @user.profile.image_url(:thumb) %>">
+    <% end %>
   </div>
 
   <div class="second-column">
     <div class="large-text mobile-two-space">
-      <%= @user.username unless @user.profile.first_name.present? || @user.profile.last_name.present? %> <%= @user.profile.first_name if @user.profile.first_name.present? %> <%= @user.profile.last_name if @user.profile.last_name.present? %><span class="tiny-text"> - <%= @user.followers.count %> followers</span>
+      <%= link_to @user.username, user_path(@user) unless @user.profile.first_name.present? || @user.profile.last_name.present? %> 
+        <%= link_to(user_path(@user)) do %>
+          <%= @user.profile.first_name if @user.profile.first_name.present? %> <%= @user.profile.last_name if @user.profile.last_name.present? %>
+        <% end %><span class="tiny-text"> - <%= @user.followers.count %> followers</span>
     </div>
 
     <div class="one-space">
