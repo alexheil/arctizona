@@ -17,6 +17,10 @@
       <span class="vote_count"><%= render 'users/partials/votes/vote_count' %></span> - <%= @photo.title %>
     </div>
 
+    <div class="nameplate border-bottom">
+      <%= @user.username unless @user.profile.first_name.present? || @user.profile.last_name.present? %> <%= @user.profile.first_name if @user.profile.first_name.present? %> <%= @user.profile.last_name if @user.profile.last_name.present? %><span class="tiny-text"> - <%= @user.followers.count %> followers</span>
+    </div>
+
     <% if @photo.camera.present? || @photo.lens.present? || @photo.aperture.present? || @photo.exposure.present? || @photo.flash.present? || @photo.focal_length.present? || @photo.iso.present? %>
       <div class="nameplate border-bottom">
         <% if @photo.camera.present? %>
