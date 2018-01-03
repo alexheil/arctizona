@@ -9,17 +9,38 @@
 <div class="wrapper">
   <div class="container">
 
-
-    <div class="nameplate border-bottom medium-text">
+    <div class="nameplate border-bottom large-text">
       <div class="vote_button">
         <%= render 'users/partials/votes/vote_button' %>
       </div>
-      <span class="vote_count"><%= render 'users/partials/votes/vote_count' %></span> - <%= @photo.title %>
+      <span class="vote_count"><%= render 'users/partials/votes/vote_count' %></span> - <%= @photo.title %><span class="tiny-text"> - posted on <%= @photo.created_at.strftime("%m.%d.%Y") %> by <%= link_to @user.username, user_path(@user) unless @user.profile.first_name.present? || @user.profile.last_name.present? %> 
+        <%= link_to(user_path(@user)) do %>
+          <%= @user.profile.first_name if @user.profile.first_name.present? %> <%= @user.profile.last_name if @user.profile.last_name.present? %>
+        <% end %>
+         - 
+        
+        <% if user_signed_in? && current_user != @user %>
+          <div class="first-column">
+            <% if current_user.following?(@user) %>
+              <%= form_for(current_user.active_relationships.find_by(followed_id: @user.id),
+                       html: { method: :delete }) do |f| %>
+                <%= f.submit "Unfollow", class: "test" %>
+              <% end %>
+            <% else %>
+              <%= form_for(current_user.active_relationships.build) do |f| %>
+                <div><%= hidden_field_tag :followed_id, @user.id %></div>
+                <%= f.submit "Follow", class: "test" %>
+              <% end %>
+            <% end %>
+          </div>
+        <% elsif user_signed_in? == false %>
+          <div class="first-column">
+            <%= link_to "Follow", sign_in_path, class: "submit-button" %>
+          </div>
+        <% end %>
+      </span>
     </div>
 
-    <div class="nameplate border-bottom">
-      <%= @user.username unless @user.profile.first_name.present? || @user.profile.last_name.present? %> <%= @user.profile.first_name if @user.profile.first_name.present? %> <%= @user.profile.last_name if @user.profile.last_name.present? %><span class="tiny-text"> - <%= @user.followers.count %> followers</span>
-    </div>
 
     <% if @photo.camera.present? || @photo.lens.present? || @photo.aperture.present? || @photo.exposure.present? || @photo.flash.present? || @photo.focal_length.present? || @photo.iso.present? %>
       <div class="nameplate border-bottom">

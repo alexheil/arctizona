@@ -297,6 +297,10 @@ a {
   margin: 1vh 0;
 }
 
+.one-space-top {
+  padding-top: 1vh;
+}
+
 .five-space-bottom {
   margin-bottom: 5vh;
 }
@@ -539,11 +543,32 @@ a {
 }
 
 .vote {
-  margin: -8px 0 0 0;
+  margin: -16px 0 0 0;
   text-align: center;
   font-size: 1.25em;
   font-weight: 300;
   float: left;
+  border: none;
+  background-color: transparent;
+  color: $main-color;
+  cursor: pointer;
+  -webkit-transition: .3s;
+  -moz-transition: .3s;
+  -o-transition: .3s;
+  &:hover {
+    -webkit-transition: .3s;
+    -moz-transition: .3s;
+    -o-transition: .3s;
+    color: $accent-color1;
+  }
+}
+
+.test {
+  text-align: center;
+  font-size: 1em;
+  font-weight: 100;
+  padding: 0;
+  margin: 12px 0 0 0;
   border: none;
   background-color: transparent;
   color: $main-color;
