@@ -41,9 +41,14 @@
       </span>
     </div>
 
-    <% if @photo.description.present? %>
+    <% if @photo.for_sale == true %>
       <div class="nameplate border-bottom">
-        <%= sanitize(@photo.description) %>
+        <div class="first-column">
+          BUTTON TO BUY
+        </div>
+        <div class="second-column">
+          <%= @photo.total_price %> <%= @photo.currency %>
+        </div>
       </div>
     <% end %>
 

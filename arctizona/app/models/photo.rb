@@ -23,7 +23,7 @@ class Photo < ApplicationRecord
   private
 
     def is_for_sale
-      self.for_sale == true
+      self.for_sale == 1
     end
 
     def total_price_calculator
