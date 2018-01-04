@@ -263,6 +263,14 @@
         </div>
         <div class="field">
           <div class="one-thirds">
+            <%= f.label :resolution %>
+          </div>
+          <div class="two-thirds">
+            <%= f.text_field :resolution, class: "text-field" %>
+          </div>
+        </div>
+        <div class="field">
+          <div class="one-thirds">
             <%= f.label :camera %>
           </div>
           <div class="two-thirds">
@@ -325,6 +333,48 @@
             <%= f.text_area :description, class: "text-area" %>
           </div>
         </div>
+
+        <div class="field">
+          <div class="one-thirds">
+            <%= f.label :for_sale %>
+          </div>
+          <div class="two-thirds">
+            <%= f.check_box :for_sale, class: "text-field" %>
+          </div>
+        </div>
+        <div class="field">
+          <div class="one-thirds">
+            <%= f.label :base_price %>
+          </div>
+          <div class="two-thirds">
+            <%= f.text_field :base_price, class: "text-field" %>
+          </div>
+        </div>
+        <div class="field">
+          <div class="one-thirds">
+            <%= f.label :shipping_price %>
+          </div>
+          <div class="two-thirds">
+            <%= f.text_field :shipping_price, class: "text-field" %>
+          </div>
+        </div>
+        <div class="field">
+          <div class="one-thirds">
+            <%= f.label :currency %>
+          </div>
+          <div class="two-thirds">
+            <%= f.text_field :currency, class: "text-field" %>
+          </div>
+        </div>
+        <div class="field">
+          <div class="one-thirds">
+            <%= f.label :quantity %>
+          </div>
+          <div class="two-thirds">
+            <%= f.text_field :quantity, class: "text-field" %>
+          </div>
+        </div>
+
         <%= f.submit "Create photo", data: { disable_with: 'Creating...' }, class: "submit-button" %>
       <% end %>
 

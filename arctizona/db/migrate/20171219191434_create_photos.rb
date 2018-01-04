@@ -6,6 +6,7 @@ class CreatePhotos < ActiveRecord::Migration[5.0]
       t.string :title, default: ""
       t.text :image_data
       t.text :description, default: ""
+      t.string :resolution, default: ""
       t.string :camera, default: ""
       t.string :lens, default: ""
       t.string :aperture, default: ""
@@ -13,6 +14,12 @@ class CreatePhotos < ActiveRecord::Migration[5.0]
       t.string :flash, default: ""
       t.string :focal_length, default: ""
       t.string :iso, default: ""
+      t.boolean :for_sale, default: false
+      t.integer :base_price, default: ""
+      t.integer :shipping_price, default: ""
+      t.integer :total_price, default: ""
+      t.string  :currency, default: ""
+      t.integer :quantity, default: ""
       t.string :slug
 
       t.timestamps

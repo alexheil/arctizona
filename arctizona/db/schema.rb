@@ -35,19 +35,26 @@ ActiveRecord::Schema.define(version: 20171221200623) do
   create_table "photos", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "album_id"
-    t.string   "title",        default: ""
+    t.string   "title",          default: ""
     t.text     "image_data"
-    t.text     "description",  default: ""
-    t.string   "camera",       default: ""
-    t.string   "lens",         default: ""
-    t.string   "aperture",     default: ""
-    t.string   "exposure",     default: ""
-    t.string   "flash",        default: ""
-    t.string   "focal_length", default: ""
-    t.string   "iso",          default: ""
+    t.text     "description",    default: ""
+    t.string   "resolution",     default: ""
+    t.string   "camera",         default: ""
+    t.string   "lens",           default: ""
+    t.string   "aperture",       default: ""
+    t.string   "exposure",       default: ""
+    t.string   "flash",          default: ""
+    t.string   "focal_length",   default: ""
+    t.string   "iso",            default: ""
+    t.boolean  "for_sale",       default: false
+    t.integer  "base_price"
+    t.integer  "shipping_price"
+    t.integer  "total_price"
+    t.string   "currency",       default: ""
+    t.integer  "quantity"
     t.string   "slug"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.index ["album_id"], name: "index_photos_on_album_id"
     t.index ["user_id"], name: "index_photos_on_user_id"
   end
