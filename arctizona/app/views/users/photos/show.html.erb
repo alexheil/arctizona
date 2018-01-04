@@ -35,12 +35,17 @@
           </div>
         <% elsif user_signed_in? == false %>
           <div class="first-column">
-            <%= link_to "Follow", sign_in_path, class: "submit-button" %>
+            <%= link_to "Follow", sign_in_path, class: "follow" %>
           </div>
         <% end %>
       </span>
     </div>
 
+    <% if @photo.description.present? %>
+      <div class="nameplate border-bottom">
+        <%= sanitize(@photo.description) %>
+      </div>
+    <% end %>
 
     <% if @photo.camera.present? || @photo.lens.present? || @photo.aperture.present? || @photo.exposure.present? || @photo.flash.present? || @photo.focal_length.present? || @photo.iso.present? %>
       <div class="nameplate border-bottom">
