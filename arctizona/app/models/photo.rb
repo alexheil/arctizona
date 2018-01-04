@@ -11,9 +11,24 @@ class Photo < ApplicationRecord
 
   has_many :votes, dependent: :destroy
 
+  validates :base_price, presence: true, if: :is_for_sale
+  validates :shipping_price, presence: true, length: { maximum: 6 }, numericality: { greater_than: 0}, if: :is_for_sale
+  validates :currency, presence: true, length: { maximum: 6 }, numericality: { greater_than: -1}, if: :is_for_sale
+  validates :quantity, presence: true, if: :is_for_sale
+  validates :total_price, presence: true, if: :is_for_sale
+  
+  before_save :total_price_calculator
   before_save :should_generate_new_friendly_id?, if: :title_changed?
 
   private
+
+    def is_for_sale
+      self.for_sale == true
+    end
+
+    def total_price_calculator
+      self.total_price = base_price + shipping_price
+    end
 
     def should_generate_new_friendly_id?
       title_changed?
