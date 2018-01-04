@@ -23,6 +23,12 @@
       <%= @album.title %>
     </div>
 
+    <% if @album.description.present? %>
+      <div class="nameplate border-bottom">
+        <%= sanitize(@album.description) %>
+      </div>
+    <% end %>
+
     <main class="five-space">
 
       <% if @album.photos.any? %>
