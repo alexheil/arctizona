@@ -339,39 +339,41 @@
             <%= f.label :for_sale %>
           </div>
           <div class="two-thirds">
-            <%= f.check_box :for_sale, class: "text-field" %>
+            <span id="for-sale"><%= f.check_box :for_sale, class: "text-field" %></span>
           </div>
         </div>
-        <div class="field">
-          <div class="one-thirds">
-            <%= f.label :base_price %>
+        <div id="for-sale-container">
+          <div class="field">
+            <div class="one-thirds">
+              <%= f.label :base_price %>
+            </div>
+            <div class="two-thirds">
+              <%= f.text_field :base_price, class: "text-field" %>
+            </div>
           </div>
-          <div class="two-thirds">
-            <%= f.text_field :base_price, class: "text-field" %>
+          <div class="field">
+            <div class="one-thirds">
+              <%= f.label :shipping_price %>
+            </div>
+            <div class="two-thirds">
+              <%= f.text_field :shipping_price, class: "text-field" %>
+            </div>
           </div>
-        </div>
-        <div class="field">
-          <div class="one-thirds">
-            <%= f.label :shipping_price %>
+          <div class="field">
+            <div class="one-thirds">
+              <%= f.label :currency %>
+            </div>
+            <div class="two-thirds">
+              <%= f.text_field :currency, class: "text-field" %>
+            </div>
           </div>
-          <div class="two-thirds">
-            <%= f.text_field :shipping_price, class: "text-field" %>
-          </div>
-        </div>
-        <div class="field">
-          <div class="one-thirds">
-            <%= f.label :currency %>
-          </div>
-          <div class="two-thirds">
-            <%= f.text_field :currency, class: "text-field" %>
-          </div>
-        </div>
-        <div class="field">
-          <div class="one-thirds">
-            <%= f.label :quantity %>
-          </div>
-          <div class="two-thirds">
-            <%= f.text_field :quantity, class: "text-field" %>
+          <div class="field">
+            <div class="one-thirds">
+              <%= f.label :quantity %>
+            </div>
+            <div class="two-thirds">
+              <%= f.text_field :quantity, class: "text-field" %>
+            </div>
           </div>
         </div>
 

@@ -73,3 +73,14 @@ var userTabs = function() {
 
 $(document).ready(userTabs);
 $(document).on('turbolinks:load', userTabs);
+
+var forSale = function() {
+  
+  $('#for-sale').change(function() {
+    $('#for-sale-container').show(300);
+  });
+
+};
+
+$(document).ready(forSale);
+$(document).on('turbolinks:load', forSale);
