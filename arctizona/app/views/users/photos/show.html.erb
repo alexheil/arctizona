@@ -49,7 +49,7 @@
         <div class="second-column">
           <% if @photo.base_price.present? %>
             <div class="one-sixth">
-              <div class="one-space-bottom">
+              <div>
                 Base Price:
               </div>
               <%= @photo.base_price %> <%= @photo.currency %>
@@ -57,7 +57,7 @@
           <% end %>
           <% if @photo.base_price.present? %>
             <div class="one-sixth">
-              <div class="one-space-bottom">
+              <div>
                 Shipping Price:
               </div>
               <%= @photo.shipping_price %> <%= @photo.currency %>
@@ -65,7 +65,7 @@
           <% end %>
           <% if @photo.total_price.present? %>
             <div class="one-sixth">
-              <div class="one-space-bottom">
+              <div>
                 Total Price:
               </div>
               <%= @photo.total_price %> <%= @photo.currency %>
@@ -84,7 +84,7 @@
         <% end %>
         <% if @photo.lens.present? %>
           <div class="one-sixth">
-            <div class="one-space-bottom">
+            <div>
               Lens:
             </div>
             <%= @photo.lens %>
@@ -92,7 +92,7 @@
         <% end %>
         <% if @photo.aperture.present? %>
           <div class="one-sixth">
-            <div class="one-space-bottom">
+            <div>
               Aperture:
             </div>
             <%= @photo.aperture %>
@@ -100,7 +100,7 @@
         <% end %>
         <% if @photo.exposure.present? %>
           <div class="one-sixth">
-            <div class="one-space-bottom">
+            <div>
               Exposure:
             </div>
             <%= @photo.exposure %>
@@ -108,7 +108,7 @@
         <% end %>
         <% if @photo.flash.present? %>
           <div class="one-sixth">  
-            <div class="one-space-bottom">
+            <div>
               Flash:
             </div>
             <%= @photo.flash %>
@@ -116,7 +116,7 @@
         <% end %>
         <% if @photo.focal_length.present? %>
           <div class="one-sixth"> 
-            <div class="one-space-bottom">
+            <div>
               Focal length:
             </div>
             <%= @photo.focal_length %>
@@ -124,7 +124,7 @@
         <% end %>
         <% if @photo.iso.present? %>
           <div class="one-sixth">
-            <div class="one-space-bottom">
+            <div>
               ISO:
             </div>
             <%= @photo.iso %>
