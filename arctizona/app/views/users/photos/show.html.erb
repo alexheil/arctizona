@@ -35,7 +35,7 @@
           </div>
         <% elsif user_signed_in? == false %>
           <div class="first-column">
-            <%= link_to "Follow", sign_in_path, class: "follow" %>
+            <%= link_to "Follow", sign_in_path %>
           </div>
         <% end %>
       </span>
@@ -47,7 +47,30 @@
           <%= link_to "Purchase", '#', class: "submit-button" %>
         </div>
         <div class="second-column">
-          <%= @photo.total_price %> <%= @photo.currency %>
+          <% if @photo.base_price.present? %>
+            <div class="one-sixth">
+              <div class="one-space-bottom">
+                Base Price:
+              </div>
+              <%= @photo.base_price %> <%= @photo.currency %>
+            </div>
+          <% end %>
+          <% if @photo.base_price.present? %>
+            <div class="one-sixth">
+              <div class="one-space-bottom">
+                Shipping Price:
+              </div>
+              <%= @photo.shipping_price %> <%= @photo.currency %>
+            </div>
+          <% end %>
+          <% if @photo.total_price.present? %>
+            <div class="one-sixth">
+              <div class="one-space-bottom">
+                Total Price:
+              </div>
+              <%= @photo.total_price %> <%= @photo.currency %>
+            </div>
+          <% end %>
         </div>
       </div>
     <% end %>
