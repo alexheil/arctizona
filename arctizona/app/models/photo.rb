@@ -20,9 +20,9 @@ class Photo < ApplicationRecord
   before_save :total_price_calculator
   before_save :should_generate_new_friendly_id?, if: :title_changed?
 
-  # def photo_resolution
+  def photo_resolution
     # get photo resolution from metadata
-  # end
+  end
 
   private
 
