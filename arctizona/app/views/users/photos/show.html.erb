@@ -44,7 +44,9 @@
     <% if @photo.for_sale == true %>
       <div class="nameplate border-bottom">
         <div class="first-column">
-          <%= link_to "Purchase", '#', class: "submit-button" %>
+          <div id="purchase-photo" class="submit-button">
+            Purchase
+          </div>
         </div>
         <div class="second-column">
           <% if @photo.base_price.present? %>
