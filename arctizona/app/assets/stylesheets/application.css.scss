@@ -755,6 +755,22 @@ a {
   display: none;
 }
 
+#purchase-form {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  margin: 0 10% 0 0;
+  z-index: 1001;
+  display: none;
+  .profile-form-inside {
+    width: 65%;
+    background: $white;
+    margin: 5vh auto;
+    padding: 2vh 2vw;
+  }
+}
+
 /* **************** MEDIA QUERIES ************ */
 
 @media screen and (max-width: 1000px) {

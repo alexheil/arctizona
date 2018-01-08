@@ -75,7 +75,7 @@ $(document).ready(userTabs);
 $(document).on('turbolinks:load', userTabs);
 
 var forSale = function() {
-  
+
   $('#for-sale').change(function() {
     $('#for-sale-container').show(300);
   });
@@ -84,3 +84,35 @@ var forSale = function() {
 
 $(document).ready(forSale);
 $(document).on('turbolinks:load', forSale);
+
+
+var editProfile = function() {
+
+  $('#purchase-photo').click(function() {
+    $('#purchase-form').show(300);
+    $('#close-album').show();
+    $('#purchase-photo').hide();
+    $('#back').show();
+    $(".wrapper").addClass("blur");
+  });
+
+  $('#close-album').click(function() {
+    $('#purchase-form').hide(300);
+    $('#close-album').hide();
+    $('#purchase-photo').show();
+    $('#back').hide();
+    $(".wrapper").removeClass("blur");
+  });
+
+  $('#back').click(function() {
+    $('#purchase-form').hide(300);
+    $('#close-album').hide();
+    $('#purchase-photo').show();
+    $('#back').hide();
+    $(".wrapper").removeClass("blur");
+  });
+
+};
+
+$(document).ready(editProfile);
+$(document).on('turbolinks:load', editProfile);
