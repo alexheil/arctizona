@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171221200623) do
+ActiveRecord::Schema.define(version: 20180111153939) do
 
   create_table "albums", force: :cascade do |t|
     t.integer  "user_id"
@@ -30,6 +30,26 @@ ActiveRecord::Schema.define(version: 20171221200623) do
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
     t.index ["user_id"], name: "index_locations_on_user_id"
+  end
+
+  create_table "payment_settings", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "stripe_publishable_key"
+    t.string   "stripe_secret_key"
+    t.string   "stripe_id"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "currency"
+    t.string   "country"
+    t.integer  "month"
+    t.integer  "day"
+    t.integer  "year"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.index ["stripe_id"], name: "index_payment_settings_on_stripe_id"
+    t.index ["stripe_publishable_key"], name: "index_payment_settings_on_stripe_publishable_key"
+    t.index ["stripe_secret_key"], name: "index_payment_settings_on_stripe_secret_key"
+    t.index ["user_id"], name: "index_payment_settings_on_user_id"
   end
 
   create_table "photos", force: :cascade do |t|
@@ -76,6 +96,28 @@ ActiveRecord::Schema.define(version: 20171221200623) do
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
     t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
+  create_table "purchases", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "photo_id"
+    t.integer  "buyer_id"
+    t.string   "stripe_charge_id"
+    t.integer  "quantity",           default: 1
+    t.integer  "pay_your_own_price", default: 0
+    t.integer  "complete_price"
+    t.string   "full_name",          default: ""
+    t.string   "street_address",     default: ""
+    t.string   "city",               default: ""
+    t.string   "state",              default: ""
+    t.string   "country",            default: ""
+    t.string   "zip_code",           default: ""
+    t.boolean  "is_shipped",         default: false, null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+    t.index ["buyer_id"], name: "index_purchases_on_buyer_id"
+    t.index ["photo_id"], name: "index_purchases_on_photo_id"
+    t.index ["user_id"], name: "index_purchases_on_user_id"
   end
 
   create_table "relationships", force: :cascade do |t|
