@@ -10,6 +10,7 @@ class Photo < ApplicationRecord
   belongs_to :user
 
   has_many :votes, dependent: :destroy
+  has_many :purchases
 
   validates :base_price, presence: true, if: :is_for_sale
   validates :shipping_price, presence: true, length: { maximum: 6 }, numericality: { greater_than: 0}, if: :is_for_sale
@@ -21,7 +22,7 @@ class Photo < ApplicationRecord
   before_save :should_generate_new_friendly_id?, if: :title_changed?
 
   def photo_resolution
-    # get photo resolution from metadata
+    get photo resolution from metadata
   end
 
   private

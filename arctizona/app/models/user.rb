@@ -18,6 +18,7 @@ class User < ApplicationRecord
   has_many :albums, dependent: :destroy
   has_many :photos, dependent: :destroy
   has_many :votes, dependent: :destroy
+  has_many :purchases
 
   has_one :profile, dependent: :destroy
   has_one :theme, dependent: :destroy
