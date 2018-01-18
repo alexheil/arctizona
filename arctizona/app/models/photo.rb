@@ -22,7 +22,7 @@ class Photo < ApplicationRecord
   before_save :should_generate_new_friendly_id?, if: :title_changed?
 
   def photo_resolution
-   # get photo resolution from metadata
+    get photo resolution from metadata
   end
 
   private
