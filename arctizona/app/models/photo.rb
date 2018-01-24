@@ -32,11 +32,11 @@ class Photo < ApplicationRecord
     end
 
     def is_art
-      #if it's art reset photo settings
+      # if it's art reset photo settings
     end
 
     def is_photo
-      #if it's photo reset art settings
+      # if it's photo reset art settings
     end
 
     def total_price_calculator
