@@ -24,6 +24,7 @@ class User < ApplicationRecord
   has_one :theme, dependent: :destroy
   has_one :location, dependent: :destroy
   has_one :payment_setting, dependent: :destroy
+  has_one :membership, dependent: :destroy
 
   before_save :should_generate_new_friendly_id?, if: :username_changed?
   before_save :downcase_username
