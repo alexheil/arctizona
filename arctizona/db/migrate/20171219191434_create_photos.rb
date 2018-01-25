@@ -18,6 +18,7 @@ class CreatePhotos < ActiveRecord::Migration[5.0]
       t.string :iso, default: ""
       t.string :tool, default: ""
       t.string :medium, default: ""
+      t.string :surface, default: ""
       t.string :size, default: ""
       t.string :style, default: ""
       t.boolean :for_sale, default: false

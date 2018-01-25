@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180111153939) do
+ActiveRecord::Schema.define(version: 20180125192226) do
 
   create_table "albums", force: :cascade do |t|
     t.integer  "user_id"
@@ -30,6 +30,19 @@ ActiveRecord::Schema.define(version: 20180111153939) do
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
     t.index ["user_id"], name: "index_locations_on_user_id"
+  end
+
+  create_table "memberships", force: :cascade do |t|
+    t.integer  "user_id"
+    t.boolean  "member",          default: false
+    t.boolean  "bronze",          default: false
+    t.boolean  "silver",          default: false
+    t.boolean  "gold",            default: false
+    t.boolean  "platnium",        default: false
+    t.string   "membership_type", default: ""
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.index ["user_id"], name: "index_memberships_on_user_id"
   end
 
   create_table "payment_settings", force: :cascade do |t|
@@ -70,6 +83,7 @@ ActiveRecord::Schema.define(version: 20180111153939) do
     t.string   "iso",            default: ""
     t.string   "tool",           default: ""
     t.string   "medium",         default: ""
+    t.string   "surface",        default: ""
     t.string   "size",           default: ""
     t.string   "style",          default: ""
     t.boolean  "for_sale",       default: false
