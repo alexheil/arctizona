@@ -31,11 +31,11 @@ class Photo < ApplicationRecord
       self.for_sale == 1
     end
 
-    def is_art
+    def is_art?
       # if it's art reset photo settings
     end
 
-    def is_photo
+    def is_photo?
       # if it's photo reset art settings
     end
 
