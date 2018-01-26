@@ -10,9 +10,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     super
-     @user.create_profile(profile_params)
-     @user.create_location(location_params)
-     @user.create_theme(theme_params)
+    @user.create_profile(profile_params)
+    @user.create_location(location_params)
+    @user.create_theme(theme_params)
   end
 
   # GET /resource/edit
