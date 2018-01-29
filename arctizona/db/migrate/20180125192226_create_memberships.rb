@@ -6,7 +6,7 @@ class CreateMemberships < ActiveRecord::Migration[5.0]
       t.boolean :bronze, default: false
       t.boolean :silver, default: false
       t.boolean :gold, default: false
-      t.boolean :platnium, default: false
+      t.boolean :platinum, default: false
       t.string :membership_type, default: ""
       t.integer :amount, default: 0
       t.integer :percent, default: 20
