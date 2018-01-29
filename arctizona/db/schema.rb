@@ -40,6 +40,8 @@ ActiveRecord::Schema.define(version: 20180125192226) do
     t.boolean  "gold",            default: false
     t.boolean  "platnium",        default: false
     t.string   "membership_type", default: ""
+    t.integer  "amount",          default: 0
+    t.integer  "percent",         default: 0
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
     t.index ["user_id"], name: "index_memberships_on_user_id"
