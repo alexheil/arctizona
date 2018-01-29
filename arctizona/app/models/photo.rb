@@ -32,7 +32,7 @@ class Photo < ApplicationRecord
     end
 
     def is_art?
-      #. if it's art reset photo settings
+      # if it's art reset photo settings
     end
 
     def is_photo?
