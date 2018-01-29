@@ -9,7 +9,7 @@ class CreateMemberships < ActiveRecord::Migration[5.0]
       t.boolean :platnium, default: false
       t.string :membership_type, default: ""
       t.integer :amount, default: 0
-      t.integer :percent, default: 0
+      t.integer :percent, default: 20
 
       t.timestamps
     end
