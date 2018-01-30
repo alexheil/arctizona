@@ -80,13 +80,23 @@ var forSale = function() {
     $('#for-sale-container').show(300);
   });
 
+  $('#is-photo-click').change(function() {
+    $('#photo-fields').show(300);
+    $('#art-fields').hide(300);
+  });
+
+   $('#is-art-click').click(function() {
+    $('#art-fields').show(300);
+    $('#photo-fields').hide(300);
+  });
+
 };
 
 $(document).ready(forSale);
 $(document).on('turbolinks:load', forSale);
 
 
-var editProfile = function() {
+var purchaseForm = function() {
 
   $('#purchase-photo').click(function() {
     $('#purchase-form').show(300);
@@ -114,5 +124,5 @@ var editProfile = function() {
 
 };
 
-$(document).ready(editProfile);
-$(document).on('turbolinks:load', editProfile);
+$(document).ready(purchaseForm);
+$(document).on('turbolinks:load', purchaseForm);

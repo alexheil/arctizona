@@ -18,6 +18,8 @@ class Photo < ApplicationRecord
   validates :quantity, presence: true, if: :is_for_sale
   validates :total_price, presence: true, if: :is_for_sale
   
+  before_save :is_art?
+  before_save :is_photo?
   before_save :total_price_calculator
   before_save :should_generate_new_friendly_id?, if: :title_changed?
 
@@ -32,15 +34,30 @@ class Photo < ApplicationRecord
     end
 
     def is_art?
-      # if it's art reset photo settings
+      if is_art == 1 && is_photo == 0
+        self.resolution == ""
+        self.camera == ""
+        self.lens == ""
+        self.aperture == ""
+        self.exposure == ""
+        self.flash == ""
+        self.focal_length == ""
+        self.iso == ""
+      end
     end
 
     def is_photo?
-      # if it's photo reset art settings
+      if is_photo == 1 && is_art == 0
+        self.tool == ""
+        self.medium == ""
+        self.surface == ""
+        self.size == ""
+        self.style == ""
+      end
     end
 
     def total_price_calculator
-      self.total_price = base_price + shipping_price
+      self.total_price = base_price + shipping_price if self.for_sale == 1
     end
 
     def should_generate_new_friendly_id?

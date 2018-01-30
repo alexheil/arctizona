@@ -21,7 +21,7 @@
       </div>
     <% end %>
 
-    <% if @user.profile.image_url.present? %>
+    <% if @user.profile.image_url(:thumb).present? %>
       <img class="thumbnail-image" src="<%= @user.profile.image_url(:thumb) %>">
     <% end %>
   </div>

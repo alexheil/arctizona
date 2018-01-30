@@ -270,18 +270,18 @@
             <%= f.label :is_photo %>
           </div>
           <div class="two-thirds">
-            <span id="for-sale"><%= f.check_box :is_photo, class: "text-field" %></span>
+            <span id="is-photo-click"><%= f.check_box :is_photo, class: "text-field" %></span>
           </div>
         </div>
+
         <div class="field">
           <div class="one-thirds">
             <%= f.label :is_art %>
           </div>
           <div class="two-thirds">
-            <span id="for-sale"><%= f.check_box :is_art, class: "text-field" %></span>
+            <span id="is-art-click"><%= f.check_box :is_art, class: "text-field" %></span>
           </div>
         </div>
-
 
         <div class="field-padding border-bottom border-top">
           Optional fields
@@ -352,14 +352,6 @@
               <%= f.text_field :iso, class: "text-field" %>
             </div>
           </div>
-          <div class="field">
-            <div class="one-thirds">
-              <%= f.label :description %>
-            </div>
-            <div class="two-thirds">
-              <%= f.text_area :description, class: "text-area" %>
-            </div>
-          </div>
         </div>
 
         <div id="art-fields">
@@ -405,7 +397,14 @@
           </div>
         </div>
 
-
+        <div class="field">
+          <div class="one-thirds">
+            <%= f.label :description %>
+          </div>
+          <div class="two-thirds">
+            <%= f.text_area :description, class: "text-area" %>
+          </div>
+        </div>
 
         <div class="field">
           <div class="one-thirds">
