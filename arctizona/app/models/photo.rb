@@ -18,8 +18,8 @@ class Photo < ApplicationRecord
   validates :quantity, presence: true, if: :is_for_sale
   validates :total_price, presence: true, if: :is_for_sale
   
-  before_save :is_art?
-  before_save :is_photo?
+  before_save :reset_photo_options
+  before_save :reset_art_options
   before_save :total_price_calculator
   before_save :should_generate_new_friendly_id?, if: :title_changed?
 
@@ -27,14 +27,14 @@ class Photo < ApplicationRecord
    # get photo resolution from metadata
   end
 
-  private
+  protected
 
     def is_for_sale
       self.for_sale == 1
     end
 
-    def is_art?
-      if is_art == 1 && is_photo == 0
+    def reset_photo_options
+      if self.is_art == 1
         self.resolution = ""
         self.camera = ""
         self.lens = ""
@@ -46,8 +46,8 @@ class Photo < ApplicationRecord
       end
     end
 
-    def is_photo?
-      if is_photo == 1 && is_art == 0
+    def reset_art_options
+      if self.is_photo == 1 && is_art == 0
         self.tool = ""
         self.medium = ""
         self.surface = ""
