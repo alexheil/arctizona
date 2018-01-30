@@ -10,7 +10,6 @@ class Profile < ApplicationRecord
   validates :instagram_url, presence: true, if: :instagram_handle_present
   validates :instagram_handle, presence: true, if: :instagram_url_present
 
-
   private
 
     def facebook_handle_present

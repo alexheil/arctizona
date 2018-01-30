@@ -35,24 +35,24 @@ class Photo < ApplicationRecord
 
     def is_art?
       if is_art == 1 && is_photo == 0
-        self.resolution == ""
-        self.camera == ""
-        self.lens == ""
-        self.aperture == ""
-        self.exposure == ""
-        self.flash == ""
-        self.focal_length == ""
-        self.iso == ""
+        self.resolution = ""
+        self.camera = ""
+        self.lens = ""
+        self.aperture = ""
+        self.exposure = ""
+        self.flash = ""
+        self.focal_length = ""
+        self.iso = ""
       end
     end
 
     def is_photo?
       if is_photo == 1 && is_art == 0
-        self.tool == ""
-        self.medium == ""
-        self.surface == ""
-        self.size == ""
-        self.style == ""
+        self.tool = ""
+        self.medium = ""
+        self.surface = ""
+        self.size = ""
+        self.style = ""
       end
     end
 
