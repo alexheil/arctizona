@@ -19,7 +19,7 @@ class Photo < ApplicationRecord
   validates :total_price, presence: true, if: :is_for_sale
   
   before_save :reset_photo_options
-  before_save :reset
+  before_save :reset_art_options
   before_save :total_price_calculator
   before_save :should_generate_new_friendly_id?, if: :title_changed?
 
