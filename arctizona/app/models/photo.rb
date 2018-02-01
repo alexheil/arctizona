@@ -34,25 +34,25 @@ class Photo < ApplicationRecord
     end
 
     def reset_photo_options
-      if self.is_art == 1
-        self.resolution = ""
-        self.camera = ""
-        self.lens = ""
-        self.aperture = ""
-        self.exposure = ""
-        self.flash = ""
-        self.focal_length = ""
-        self.iso = ""
+      if self.is_art?
+        self.resolution = nil
+        self.camera = nil
+        self.lens = nil
+        self.aperture = nil
+        self.exposure = nil
+        self.flash = nil
+        self.focal_length = nil
+        self.iso = nil
       end
     end
 
     def reset_art_options
-      if self.is_photo == 1
-        self.tool = ""
-        self.medium = ""
-        self.surface = ""
-        self.size = ""
-        self.style = ""
+      if self.is_photo?
+        self.tool = nil
+        self.medium = nil
+        self.surface = nil
+        self.size = nil
+        self.style = nil
       end
     end
 
