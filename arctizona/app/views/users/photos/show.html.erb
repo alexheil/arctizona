@@ -135,6 +135,51 @@
       </div>
     <% end %>
 
+    <% if @photo.is_art == 1 && (@photo.tool.present? || @photo.medium.present? || @photo.surface.present? || @photo.size.present? || @photo.style.present?) %>
+      <div class="nameplate border-bottom">
+        <% if @photo.tool.present? %>
+          <div class="one-sixth">
+            <div>
+              Tool:
+            </div>
+            <%= @photo.tool %>
+          </div>
+        <% end %>
+        <% if @photo.medium.present? %>
+          <div class="one-sixth">
+            <div>
+              Medium:
+            </div>
+            <%= @photo.medium %>
+          </div>
+        <% end %>
+        <% if @photo.surface.present? %>
+          <div class="one-sixth">
+            <div>
+              Surface:
+            </div>
+            <%= @photo.surface %>
+          </div>
+        <% end %>
+        <% if @photo.style.present? %>
+          <div class="one-sixth">  
+            <div>
+              Style:
+            </div>
+            <%= @photo.style %>
+          </div>
+        <% end %>
+        <% if @photo.size.present? %>
+          <div class="one-sixth"> 
+            <div>
+              Size:
+            </div>
+            <%= @photo.size %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+
     <% if @photo.description.present? %>
       <div class="nameplate border-bottom">
         <%= sanitize(@photo.description) %>
