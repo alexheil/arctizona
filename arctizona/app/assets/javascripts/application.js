@@ -81,12 +81,12 @@ var forSale = function() {
   });
 
   $('#is-photo-click').change(function() {
-    $('#photo-fields').show(300);
+    $('#photo-fields').toggle(this.checked);
     $('#art-fields').hide(300);
-  });
+  }).change();
 
    $('#is-art-click').change(function() {
-    $('#art-fields').show(300);
+    $('#art-fields').toggle(this.checked);
     $('#photo-fields').hide(300);
   });
 
@@ -94,7 +94,6 @@ var forSale = function() {
 
 $(document).ready(forSale);
 $(document).on('turbolinks:load', forSale);
-
 
 var purchaseForm = function() {
 

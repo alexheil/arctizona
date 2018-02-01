@@ -6,7 +6,7 @@ class CreatePhotos < ActiveRecord::Migration[5.0]
       t.string :title, default: ""
       t.text :image_data
       t.boolean :is_art, default: false
-      t.boolean :is_photo, default: false
+      t.boolean :is_photo, default: true
       t.text :description, default: ""
       t.string :resolution, default: ""
       t.string :camera, default: ""
