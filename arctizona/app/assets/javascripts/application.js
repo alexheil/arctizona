@@ -85,7 +85,7 @@ var forSale = function() {
     $('#art-fields').hide(300);
   });
 
-   $('#is-art-click').click(function() {
+   $('#is-art-click').change(function() {
     $('#art-fields').show(300);
     $('#photo-fields').hide(300);
   });
