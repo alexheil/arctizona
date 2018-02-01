@@ -77,7 +77,7 @@
       </div>
     <% end %>
 
-    <% if @photo.is_photo == 1 && (@photo.camera.present? || @photo.lens.present? || @photo.aperture.present? || @photo.exposure.present? || @photo.flash.present? || @photo.focal_length.present? || @photo.iso.present?) %>
+    <% if @photo.is_photo == true && (@photo.camera.present? || @photo.lens.present? || @photo.aperture.present? || @photo.exposure.present? || @photo.flash.present? || @photo.focal_length.present? || @photo.iso.present?) %>
       <div class="nameplate border-bottom">
         <% if @photo.camera.present? %>
           <div class="one-space-bottom medium-text">
@@ -135,7 +135,7 @@
       </div>
     <% end %>
 
-    <% if @photo.is_art == 1 && (@photo.tool.present? || @photo.medium.present? || @photo.surface.present? || @photo.size.present? || @photo.style.present?) %>
+    <% if @photo.is_art == true && (@photo.tool.present? || @photo.medium.present? || @photo.surface.present? || @photo.size.present? || @photo.style.present?) %>
       <div class="nameplate border-bottom">
         <% if @photo.tool.present? %>
           <div class="one-sixth">

@@ -47,7 +47,7 @@ class Photo < ApplicationRecord
     end
 
     def reset_art_options
-      if self.is_photo == 1 && is_art == 0
+      if self.is_photo == 1
         self.tool = ""
         self.medium = ""
         self.surface = ""
