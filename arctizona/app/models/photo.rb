@@ -33,7 +33,11 @@ class Photo < ApplicationRecord
       self.for_sale == 1
     end
 
-    def reset_photo_optionsw
+    def reset_photo_options
+      if self.is_art == 1
+        self.resolution = ""
+        self.camera = ""
+        self.lens = ""
         self.aperture = ""
         self.exposure = ""
         self.flash = ""
