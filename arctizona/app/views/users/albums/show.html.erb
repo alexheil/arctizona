@@ -247,6 +247,7 @@
       </div>
 
       <%= form_for(@photo, url: user_album_photos_path(@user, @album)) do |f| %>
+        <%= render 'partials/errors/photo_errors' %>
         <div class="field">
           <div class="one-thirds">
             <%= f.label :title %>

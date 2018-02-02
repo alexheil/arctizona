@@ -22,11 +22,11 @@ class CreatePhotos < ActiveRecord::Migration[5.0]
       t.string :size, default: ""
       t.string :style, default: ""
       t.boolean :for_sale, default: false
-      t.integer :base_price, default: ""
-      t.integer :shipping_price, default: ""
-      t.integer :total_price, default: ""
-      t.string  :currency, default: ""
-      t.integer :quantity, default: ""
+      t.integer :base_price
+      t.integer :shipping_price
+      t.integer :total_price
+      t.string  :currency
+      t.integer :quantity
       t.string :slug
 
       t.timestamps

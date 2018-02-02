@@ -92,7 +92,7 @@ ActiveRecord::Schema.define(version: 20180125192226) do
     t.integer  "base_price"
     t.integer  "shipping_price"
     t.integer  "total_price"
-    t.string   "currency",       default: ""
+    t.string   "currency"
     t.integer  "quantity"
     t.string   "slug"
     t.datetime "created_at",                     null: false

@@ -22,7 +22,7 @@ class Users::PhotosController < ApplicationController
       redirect_to user_album_path(@user, @album)
       flash[:notice] = "You've successfully added a photo!"
     else
-      render 'new'
+      redirect_to (:back)
       flash.now[:alert] = "You've failed!"
     end
   end
@@ -37,7 +37,7 @@ class Users::PhotosController < ApplicationController
       redirect_to user_album_path(@user, @album)
       flash[:notice] = "You've successfully updated your item!"
     else
-      render 'edit'
+      redirect_to (:back)
       flash.now[:alert] = "You've failed!"
     end
   end

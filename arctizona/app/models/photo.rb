@@ -12,11 +12,11 @@ class Photo < ApplicationRecord
   has_many :votes, dependent: :destroy
   has_many :purchases
 
-  validates :base_price, presence: true, if: :is_for_sale
-  validates :shipping_price, presence: true, length: { maximum: 6 }, numericality: { greater_than: 0}, if: :is_for_sale
-  validates :currency, presence: true, length: { maximum: 6 }, numericality: { greater_than: -1}, if: :is_for_sale
+  validates :currency, presence: true, if: :is_for_sale
+  validates :base_price, presence: true, length: { maximum: 6 }, numericality: { greater_than: 0}, if: :is_for_sale
+  validates :shipping_price, presence: true, length: { maximum: 6 }, numericality: { greater_than: -1}, if: :is_for_sale
   validates :quantity, presence: true, if: :is_for_sale
-  validates :total_price, presence: true, if: :is_for_sale
+  #validates :total_price, presence: true, if: :is_for_sale
   
   before_save :art_or_photo_check
   before_save :reset_photo_options
@@ -29,10 +29,10 @@ class Photo < ApplicationRecord
    # get photo resolution from metadata
   end
 
-  protected
+  private
 
     def is_for_sale
-      self.for_sale == 1
+      self.for_sale == true
     end
 
     def reset_sales_options
@@ -79,7 +79,7 @@ class Photo < ApplicationRecord
     end
 
     def total_price_calculator
-      self.total_price = base_price + shipping_price if self.for_sale == 1
+      self.total_price = base_price + shipping_price if self.for_sale == true
     end
 
     def should_generate_new_friendly_id?
