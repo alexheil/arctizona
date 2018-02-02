@@ -29,6 +29,12 @@ class Photo < ApplicationRecord
 
   protected
 
+    def art_or_photo_check
+      if self.is_photo? && self.is_art?
+        self.is_photo?
+      end
+    end
+
     def is_for_sale
       self.for_sale == 1
     end
