@@ -21,6 +21,7 @@ class Photo < ApplicationRecord
   before_save :art_or_photo_check
   before_save :reset_photo_options
   before_save :reset_art_options
+  before_save :reset_sales_options
   before_save :total_price_calculator
   before_save :should_generate_new_friendly_id?, if: :title_changed?
 
@@ -34,8 +35,21 @@ class Photo < ApplicationRecord
       self.for_sale == 1
     end
 
+    def reset_sales_options
+      if self.for_sale == false
+        self.base_price = nil
+        self.shipping_price = nil
+        self.currency = nil
+        self.quantity = nil
+        self.total_price = nil
+      end
+    end
+
     def art_or_photo_check
       if self.is_photo? && self.is_art?
+        self.is_photo = 1
+        self.is_art = 0
+      elsif self.is_photo == false && self.is_art == false
         self.is_photo = 1
         self.is_art = 0
       end

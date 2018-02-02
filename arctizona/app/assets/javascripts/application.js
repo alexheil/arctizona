@@ -77,17 +77,32 @@ $(document).on('turbolinks:load', userTabs);
 var forSale = function() {
 
   $('#for-sale').change(function() {
-    $('#for-sale-container').show(300);
+    $('#for-sale-container').toggle(this.checked);
   });
 
   $('#is-photo-click').change(function() {
     $('#photo-fields').toggle(this.checked);
-    $('#art-fields').hide(300);
+    $('#art-fields').hide();
+    if ($(this).prop('checked')) {
+      $('#art-fields').hide();
+      $('#is-art-click').prop('checked', false);
+    }
+    else {
+      $('#is-art-click').prop('checked', true);
+      $('#art-fields').show();
+    }
   }).change();
 
-   $('#is-art-click').change(function() {
+  $('#is-art-click').change(function() {
     $('#art-fields').toggle(this.checked);
-    $('#photo-fields').hide(300);
+    if ($(this).prop('checked')) {
+      $('#photo-fields').hide();
+      $('#is-photo-click').prop('checked', false);
+    }
+    else {
+      $('#is-photo-click').prop('checked', true);
+      $('#photo-fields').show();
+    }
   });
 
 };
