@@ -18,6 +18,7 @@ class Photo < ApplicationRecord
   validates :quantity, presence: true, if: :is_for_sale
   validates :total_price, presence: true, if: :is_for_sale
   
+  before_save :art_or_photo_check
   before_save :reset_photo_options
   before_save :reset_art_options
   before_save :total_price_calculator
@@ -29,14 +30,15 @@ class Photo < ApplicationRecord
 
   protected
 
-    def art_or_photo_check
-      if self.is_photo? && self.is_art?
-        self.is_photo?
-      end
-    end
-
     def is_for_sale
       self.for_sale == 1
+    end
+
+    def art_or_photo_check
+      if self.is_photo? && self.is_art?
+        self.is_photo = 1
+        self.is_art = 0
+      end
     end
 
     def reset_photo_options
