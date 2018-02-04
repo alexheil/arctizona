@@ -784,6 +784,15 @@ a {
   }
 }
 
+#edit-photo-click {
+  @include transition;
+  cursor: pointer;
+  color: $main-color;
+  &:hover {
+    color: $accent-color1;
+  }
+}
+
 /* **************** MEDIA QUERIES ************ */
 
 @media screen and (max-width: 1000px) {

@@ -21,6 +21,14 @@ var editProfile = function() {
     $(".wrapper").addClass("blur");
   });
 
+  $('#edit-photo-click').click(function() {
+    $('#album-form').show(300);
+    $('#close-album').show();
+    $('#edit-photo-click').hide();
+    $('#back').show();
+    $(".wrapper").addClass("blur");
+  });
+
   $('#close-profile').click(function() {
     $('#profile-form').hide(300);
     $('#close-profile').hide();
@@ -32,6 +40,7 @@ var editProfile = function() {
   $('#close-album').click(function() {
     $('#album-form').hide(300);
     $('#close-album').hide();
+    $('#edit-photo-click').show();
     $('#create-album').show();
     $('#back').hide();
     $(".wrapper").removeClass("blur");
@@ -78,7 +87,7 @@ var forSale = function() {
 
   $('#for-sale').change(function() {
     $('#for-sale-container').toggle(this.checked);
-  });
+  }).change();
 
   $('#is-photo-click').change(function() {
     $('#photo-fields').toggle(this.checked);
@@ -114,15 +123,15 @@ var purchaseForm = function() {
 
   $('#purchase-photo').click(function() {
     $('#purchase-form').show(300);
-    $('#close-album').show();
+    $('#close-profile').show();
     $('#purchase-photo').hide();
     $('#back').show();
     $(".wrapper").addClass("blur");
   });
 
-  $('#close-album').click(function() {
+  $('#close-profile').click(function() {
     $('#purchase-form').hide(300);
-    $('#close-album').hide();
+    $('#close-profile').hide();
     $('#purchase-photo').show();
     $('#back').hide();
     $(".wrapper").removeClass("blur");

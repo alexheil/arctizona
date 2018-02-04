@@ -10,7 +10,7 @@ class ImageUploader < Shrine
   plugin :remove_attachment
 
   process(:store) do |io, context|
-    { original: io, thumb: resize_to_limit!(io.download, 300, 300) }
+    { original: io, thumb: resize_to_limit!(io.download, 500, 500) }
   end
 
   Attacher.validate do

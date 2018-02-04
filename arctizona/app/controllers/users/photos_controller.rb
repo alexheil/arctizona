@@ -34,7 +34,7 @@ class Users::PhotosController < ApplicationController
     @album = Album.friendly.find(params[:album_id])
     @photo = Photo.friendly.find(params[:id])
     if @photo.update_attributes(photo_params)
-      redirect_to user_album_path(@user, @album)
+      redirect_to user_album_photo_path(@user, @album, @photo)
       flash[:notice] = "You've successfully updated your item!"
     else
       redirect_to (:back)
