@@ -36,7 +36,7 @@ class Users::AlbumsController < ApplicationController
 
   def update
     @album = Album.friendly.find(params[:id])
-    if @palbum.update_attributes(album_params)
+    if @album.update_attributes(album_params)
       redirect_to user_album_path(@user, @album)
       flash[:notice] = "You've successfully updated your item!"
     else

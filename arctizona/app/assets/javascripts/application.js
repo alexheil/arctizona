@@ -29,6 +29,23 @@ var editProfile = function() {
     $(".wrapper").addClass("blur");
   });
 
+  $('#edit-album-click').click(function() {
+    $('#edit-album-form').show(300);
+    $('#edit-close-album').show();
+    $('#edit-album-click').hide();
+    $('#back').show();
+    $(".wrapper").addClass("blur");
+  });
+
+  $('#edit-close-album').click(function() {
+    $('#edit-album-form').hide(300);
+    $('#edit-close-album').hide();
+    $('#edit-album-click').show();
+    $('#back').hide();
+    $(".wrapper").removeClass("blur");
+  });
+
+
   $('#close-profile').click(function() {
     $('#profile-form').hide(300);
     $('#close-profile').hide();
@@ -50,8 +67,11 @@ var editProfile = function() {
     $('#profile-form').hide(300);
     $('#album-form').hide(300);
     $('#close-profile').hide();
+    $('#edit-album-form').hide(300);
     $('#create-album').show();
     $('#edit-profile').show();
+    $('#edit-photo-click').show();
+    $('#edit-album-click').show();
     $('#back').hide();
     $(".wrapper").removeClass("blur");
   });

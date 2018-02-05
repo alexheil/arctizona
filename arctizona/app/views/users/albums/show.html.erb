@@ -21,6 +21,9 @@
 
     <div class="nameplate border-bottom large-text">
       <%= @album.title %>
+      <% if user_signed_in? && current_user == @user %>
+        <span class="tiny-text"> - <span id="edit-album-click">Edit this album</span></span>
+      <% end %>
     </div>
 
     <% if @album.description.present? %>
@@ -451,6 +454,40 @@
         </div>
 
         <%= f.submit "Create photo", data: { disable_with: 'Creating...' }, class: "submit-button" %>
+      <% end %>
+
+    </div>
+  </div>
+<% end %>
+
+<% if user_signed_in? && current_user == @user %>
+
+  <div id="back"></div>
+  <div id="edit-album-form">
+    <div class="profile-form-inside">
+      <div id="edit-close-album" class="one-space">
+        Close
+      </div>
+
+      <%= form_for(@album, url: user_album_path(@user)) do |f| %>
+        <%= render 'partials/errors/album_errors' %>
+        <div class="field">
+          <div class="one-thirds">
+            <%= f.label :title %>
+          </div>
+          <div class="two-thirds">
+            <%= f.text_field :title, class: "text-field" %>
+          </div>
+        </div>
+        <div class="field">
+          <div class="one-thirds">
+            <%= f.label :description %>
+          </div>
+          <div class="two-thirds">
+            <%= f.text_area :description, class: "text-area" %>
+          </div>
+        </div>
+        <%= f.submit "Update photo album", data: { disable_with: 'Updating...' }, class: "submit-button" %>
       <% end %>
 
     </div>
