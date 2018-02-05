@@ -16,9 +16,6 @@ class Users::AlbumsController < ApplicationController
     end
   end
 
-  def new
-  end
-
   def create
     @album = @user.albums.build(album_params)
     if @album.save
@@ -28,10 +25,6 @@ class Users::AlbumsController < ApplicationController
       render 'new'
       flash.now[:alert] = "You've failed!"
     end
-  end
-
-  def edit
-
   end
 
   def update

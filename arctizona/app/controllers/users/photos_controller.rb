@@ -11,9 +11,6 @@ class Users::PhotosController < ApplicationController
     @photo = Photo.friendly.find(params[:id])
   end
 
-  def new
-  end
-
   def create
     @album = Album.friendly.find(params[:album_id])
     @photo = @album.photos.build(photo_params)
@@ -25,9 +22,6 @@ class Users::PhotosController < ApplicationController
       redirect_to (:back)
       flash.now[:alert] = "You've failed!"
     end
-  end
-
-  def edit
   end
 
   def update
