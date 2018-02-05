@@ -31,9 +31,18 @@ class Users::AlbumsController < ApplicationController
   end
 
   def edit
+
   end
 
   def update
+    @album = Album.friendly.find(params[:id])
+    if @palbum.update_attributes(album_params)
+      redirect_to user_album_path(@user, @album)
+      flash[:notice] = "You've successfully updated your item!"
+    else
+      redirect_to (:back)
+      flash.now[:alert] = "You've failed!"
+    end
   end
 
   def destroy
