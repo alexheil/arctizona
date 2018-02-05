@@ -30,7 +30,10 @@ Rails.application.routes.draw do
         end
       end
     end
+    resource :membership, controller: 'users/memberships', only: [:new, :create, :edit, :update, :destroy]
   end
+
+
   resources :relationships, controller: 'users/relationships', only: [:create, :update, :destroy]
 
 end
