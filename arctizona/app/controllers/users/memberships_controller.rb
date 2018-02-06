@@ -1,9 +1,11 @@
 class Users::MembershipsController < ApplicationController
 
   def new
+    @membership = Membership.new
   end
 
   def create
+    @user.create_memebrship(membership_params)
   end
 
   def edit
@@ -16,6 +18,10 @@ class Users::MembershipsController < ApplicationController
   end
 
   private
+
+    def set_user
+      @user = current_user
+    end
 
     def membership_params
       params.require(:membership).permit(:member, :bronze, :silver, :gold, :platinum, :membership_type, :amount, :percent)
