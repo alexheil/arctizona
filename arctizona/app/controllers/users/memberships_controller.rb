@@ -1,5 +1,7 @@
 class Users::MembershipsController < ApplicationController
 
+  before_action :set_user
+
   def new
     @membership = Membership.new
   end
