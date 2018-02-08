@@ -3,7 +3,7 @@ class Users::MembershipsController < ApplicationController
   before_action :set_user
 
   def new
-    @membership = Membership.new
+    @membership = @user.build_membership
   end
 
   def create

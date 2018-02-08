@@ -73,6 +73,10 @@ class User < ApplicationRecord
     Vote.find_by(user_id: id, photo_id: photo.id).id
   end
 
+  def is_member
+    self.membership.present?
+  end
+
   private
 
     def should_generate_new_friendly_id?
