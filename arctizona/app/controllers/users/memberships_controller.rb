@@ -7,7 +7,14 @@ class Users::MembershipsController < ApplicationController
   end
 
   def create
-    @user.create_membership(membership_params)
+    @membership = @user.create_membership(membership_params)
+    if @membership.save
+      redirect_to user_path(@user)
+      flash[:notice] = "You've successfully added a photo album!"
+    else
+      render 'new'
+      flash.now[:alert] = "You've failed!"
+    end
   end
 
   def edit
