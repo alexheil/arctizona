@@ -7,7 +7,7 @@ class Users::MembershipsController < ApplicationController
   end
 
   def create
-    @user.create_memebrship(membership_params)
+    @user.create_membership(membership_params)
   end
 
   def edit
