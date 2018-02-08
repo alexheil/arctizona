@@ -1,12 +1,11 @@
 <%= form_for(@memebrship, url: user_memberships_path(@user, @membership)) do |f| %>
 
-
   <div class="field">
     <div class="one-thirds">
       <%= f.label :membership_type %>
     </div>
     <div class="two-thirds">
-      <%= f.text_field :title, class: "text-field" %>
+      <%= f.text_field :membership_type, class: "text-field" %>
     </div>
   </div>
 
