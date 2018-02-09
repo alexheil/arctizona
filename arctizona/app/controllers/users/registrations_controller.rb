@@ -13,6 +13,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user.create_profile(profile_params)
     @user.create_location(location_params)
     @user.create_theme(theme_params)
+    @user.create_membership(membership_params)
   end
 
   # GET /resource/edit
@@ -51,6 +52,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
     def theme_params
       params.permit(:main_color, :text_color, :background_color, :link_color, :hover_color)
+    end
+
+    def membership_params
+      params.permit(:copper, :bronze, :silver, :gold, :platinum, :membership_type, :amount, :percent)
     end
 
   # protected

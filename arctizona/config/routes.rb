@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     resource :profile, controller: 'users/profiles', only: [:edit, :update]
     resource :location, controller: 'users/locations', only: [:edit, :update]
     resource :theme, controller: 'users/themes', only: [:edit, :update]
-    resources :albums, controller: 'users/albums', except: [:index, :new, :edit] do
+    resources :album, controller: 'users/albums', except: [:index, :new, :edit] do
       resources :photos, controller: 'users/photos', except: [:index, :new, :edit] do
         resources :votes, controller: 'users/votes', only: [:create, :destroy]
         resources :purchases, controller: 'users/purchases', only: [:create, :edit, :update, :destroy] do
