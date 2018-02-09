@@ -34,16 +34,16 @@ ActiveRecord::Schema.define(version: 20180125192226) do
 
   create_table "memberships", force: :cascade do |t|
     t.integer  "user_id"
-    t.boolean  "member",          default: false
+    t.boolean  "copper",          default: true
     t.boolean  "bronze",          default: false
     t.boolean  "silver",          default: false
     t.boolean  "gold",            default: false
     t.boolean  "platinum",        default: false
-    t.string   "membership_type", default: ""
+    t.string   "membership_type", default: "Copper"
     t.integer  "amount",          default: 0
     t.integer  "percent",         default: 20
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
     t.index ["user_id"], name: "index_memberships_on_user_id"
   end
 

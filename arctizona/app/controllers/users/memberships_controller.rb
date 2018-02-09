@@ -32,7 +32,7 @@ class Users::MembershipsController < ApplicationController
     end
 
     def membership_params
-      params.require(:membership).permit(:member, :bronze, :silver, :gold, :platinum, :membership_type, :amount, :percent)
+      params.require(:membership).permit(:copper, :bronze, :silver, :gold, :platinum, :membership_type, :amount, :percent)
     end
 
 end
