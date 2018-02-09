@@ -13,7 +13,6 @@ class Users::MembershipsController < ApplicationController
       flash[:notice] = "You've successfully added a photo album!"
     else
       render 'new'
-      flash.now[:alert] = "You've failed!"
     end
   end
 
