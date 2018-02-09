@@ -7,7 +7,7 @@
       <ul>
         <% if user_signed_in? %>
           <% if current_user.membership.nil? %>
-            <li><%= link_to "Membership", new_user_membership_path, class: "nav-links" %></li>
+            <li><%= link_to "Membership", new_user_membership_path(current_user), class: "nav-links" %></li>
           <% end %>
           <li><%= link_to "Your Page", user_path(current_user) %></li>
           <li><%= link_to "Sign Out", sign_out_path, class: "nav-links" %></li>
