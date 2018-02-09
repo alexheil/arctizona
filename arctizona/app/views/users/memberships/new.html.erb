@@ -2,12 +2,39 @@
 
   <div class="field">
     <div class="one-thirds">
-      <%= f.label :membership_type %>
+      <%= f.label :bronze %>
     </div>
     <div class="two-thirds">
-      <%= f.text_field :membership_type, class: "text-field" %>
+      <%= f.check_box :bronze, class: "text-field", id: "is-photo-click" %>
     </div>
   </div>
+  <div class="field">
+    <div class="one-thirds">
+      <%= f.label :silver %>
+    </div>
+    <div class="two-thirds">
+      <%= f.check_box :silver, class: "text-field", id: "is-photo-click" %>
+    </div>
+  </div>
+  <div class="field">
+    <div class="one-thirds">
+      <%= f.label :gold %>
+    </div>
+    <div class="two-thirds">
+      <%= f.check_box :gold, class: "text-field", id: "is-photo-click" %>
+    </div>
+  </div>
+  <div class="field">
+    <div class="one-thirds">
+      <%= f.label :platinum %>
+    </div>
+    <div class="two-thirds">
+      <%= f.check_box :platinum, class: "text-field", id: "is-photo-click" %>
+    </div>
+  </div>
+
+
+
   <%= f.submit "Create membership", data: { disable_with: 'Creating...' }, class: "submit-button" %>
 
 <% end %>
