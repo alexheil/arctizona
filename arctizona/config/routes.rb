@@ -33,7 +33,6 @@ Rails.application.routes.draw do
     end
   end
 
-
   resources :relationships, controller: 'users/relationships', only: [:create, :update, :destroy]
 
 end
