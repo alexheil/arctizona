@@ -3,9 +3,16 @@ class Users::MembershipsController < ApplicationController
   before_action :set_user
 
   def edit
+    @membership = @user.membership
   end
 
   def update
+    @membership = @user.membership
+    if @membership.update_attributes(membership_params)
+      redirect_to current_user
+    else
+      render 'edit'
+    end
   end
 
   private
