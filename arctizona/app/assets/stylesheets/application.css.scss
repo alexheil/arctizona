@@ -301,6 +301,7 @@ a {
 .one-space {
   margin: 1vh 0;
 }
+
 .one-space-bottom {
   margin-bottom: 1vh;
 }
@@ -515,6 +516,11 @@ a {
     &:focus {
     border: 1px solid $black;
   }
+}
+
+.form-container {
+  width: 70%;
+  margin: 0 auto;
 }
 
 .text-field {

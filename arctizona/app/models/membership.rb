@@ -11,9 +11,9 @@ class Membership < ApplicationRecord
     def bronze_member
       if self.bronze?
         self.membership_type = "Bronze"
-        self.silver_member = 0
-        self.gold_member = 0
-        self.platinum_member = 0
+        self.silver = 0
+        self.gold = 0
+        self.platinum = 0
         self.percent = 15
         self.amount = 5
       end

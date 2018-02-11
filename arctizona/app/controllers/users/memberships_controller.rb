@@ -1,5 +1,7 @@
 class Users::MembershipsController < ApplicationController
 
+  before_action :authenticate_user!
+  before_action :correct_user
   before_action :set_user
 
   def edit
@@ -19,6 +21,14 @@ class Users::MembershipsController < ApplicationController
 
     def set_user
       @user = current_user
+    end
+
+    def correct_user
+      @user = User.friendly.find(params[:user_id])
+      if current_user != @user
+        redirect_to user_path(@user)
+        flash[:alert] = "This is not your profile."
+      end
     end
 
     def membership_params
