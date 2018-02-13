@@ -5,10 +5,16 @@
 
 var menuToggle = function() {
 
+  $('#menu-click').click(function() {
+    $('#menu-container').show(300);
+    $('#back').show();
+    $(".wrapper").addClass("blur");
+  });
+
 };
 
-$(document).ready(editProfile);
-$(document).on('turbolinks:load', editProfile);
+$(document).ready(menuToggle);
+$(document).on('turbolinks:load', menuToggle);
 
 
 var editProfile = function() {
