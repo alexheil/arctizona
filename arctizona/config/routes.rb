@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   end
 
   resources :users, path: '', controller: 'users/users', only: :show do
-    resources :payment_settings, controller: 'users/payment_settings', only: [:new, :create, :edit, :update]
+    resource :payment_settings, controller: 'users/payment_settings', only: [:new, :create, :edit, :update]
     resource :profile, controller: 'users/profiles', only: [:edit, :update]
     resource :location, controller: 'users/locations', only: [:edit, :update]
     resource :theme, controller: 'users/themes', only: [:edit, :update]
