@@ -4,7 +4,7 @@
 
 <%= form_for(@payment, url: user_payment_settings_path) do |f| %>
   <%= f.hidden_field :user_id %>
-  <%= render 'errors/payment_setting_errors' %>
+  <%= render 'partials/errors/payment_setting_errors' %>
   <div class="field">
     <div class="one-thirds">
       <%= f.label :first_name %>
@@ -56,5 +56,5 @@
   <%= f.submit "Create merchant account", data: { disable_with: 'Creating...' }, class: "submit-button" %>
 <% end %>
 <div class="harlem">
-  by registering your account, you agree to our <%= link_to 'Terms of Use', terms_of_use_path  %> and the <a href="https://stripe.com/connect/account-terms">Stripe Connected Account Agreement</a>.
+  By registering your account, you agree to our <%= link_to 'Terms of Use', terms_path  %> and the <a href="https://stripe.com/connect/account-terms">Stripe Connected Account Agreement</a>.
 </div>

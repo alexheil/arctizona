@@ -94,7 +94,7 @@ class Users::PaymentSettingsController < ApplicationController
         month: params[:payment_setting][:month],
         day: params[:payment_setting][:day],
         year: params[:payment_setting][:year],
-       currency: account.default_currency
+        currency: account.default_currency
       )
       if @payment.save
       redirect_to user_path(@user)
@@ -116,7 +116,7 @@ class Users::PaymentSettingsController < ApplicationController
     end
 
     def correct_user
-      @user = user.friendly.find(params[:user_id])
+      @user = User.friendly.find(params[:user_id])
       if current_user != @user
         redirect_to user_path(@user)
         flash[:alert] = "this is not you."

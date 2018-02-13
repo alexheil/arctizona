@@ -3,6 +3,14 @@
 //= require turbolinks
 //= require_tree .
 
+var menuToggle = function() {
+
+};
+
+$(document).ready(editProfile);
+$(document).on('turbolinks:load', editProfile);
+
+
 var editProfile = function() {
 
   $('#edit-profile').click(function() {
