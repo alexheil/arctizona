@@ -124,6 +124,7 @@ ActiveRecord::Schema.define(version: 20180125192226) do
     t.integer  "user_id"
     t.integer  "photo_id"
     t.integer  "buyer_id"
+    t.integer  "seller_id"
     t.string   "stripe_charge_id"
     t.integer  "quantity",           default: 1
     t.integer  "pay_your_own_price", default: 0
@@ -139,6 +140,7 @@ ActiveRecord::Schema.define(version: 20180125192226) do
     t.datetime "updated_at",                         null: false
     t.index ["buyer_id"], name: "index_purchases_on_buyer_id"
     t.index ["photo_id"], name: "index_purchases_on_photo_id"
+    t.index ["seller_id"], name: "index_purchases_on_seller_id"
     t.index ["user_id"], name: "index_purchases_on_user_id"
   end
 

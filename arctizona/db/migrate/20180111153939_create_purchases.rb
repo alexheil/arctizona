@@ -4,6 +4,7 @@ class CreatePurchases < ActiveRecord::Migration[5.0]
       t.references :user
       t.references :photo
       t.integer :buyer_id
+      t.integer :seller_id
       t.string :stripe_charge_id
       t.integer :quantity, default: 1
       t.integer :pay_your_own_price, default: 0
@@ -20,5 +21,6 @@ class CreatePurchases < ActiveRecord::Migration[5.0]
     end
 
     add_index :purchases, :buyer_id
+    add_index :purchases, :seller_id
   end
 end
