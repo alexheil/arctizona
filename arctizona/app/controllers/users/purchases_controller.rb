@@ -7,6 +7,15 @@ class Users::PurchasesController < ApplicationController
 
     @purchase.buyer_id = current_user.id
     @purchase.seller_id = @user.id
+    @purchase.complete_price = (@photo.total_price * @purchase.quantity) + @purchase.pay_your_own_price
+  
+    if @purchase.save
+      redirect_to user_album_photo_path(@user, @album, @photo)
+      flash[:notice] = "how will you pay this?"
+    else
+      redirect_to artist_merch_path(@artist, @merch)
+      flash.now[:alert] = "you have failed."
+    end
   end
 
   private 
