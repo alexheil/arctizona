@@ -276,6 +276,28 @@ a {
   opacity: 0;
 }
 
+.side-header {
+  position: fixed;
+  text-align: center;
+  top: 0;
+  right: 0;
+  z-index: 9999;
+  width: auto;
+  background: $black;
+  height: 100%;
+  color: $white;
+  a {
+    color: $white;
+  }
+  ul {
+    padding: 0vh 2vw;
+    li {
+      padding: 2vh 0;
+      list-style: none;
+    }
+  }
+}
+
 /* ************** FONT AND SPACING ************** */
 
 .white {
@@ -842,6 +864,15 @@ a {
   @include transition;
   cursor: pointer;
   color: $main-color;
+  &:hover {
+    color: $accent-color1;
+  }
+}
+
+#close-menu {
+  @include transition;
+  cursor: pointer;
+  color: $white;
   &:hover {
     color: $accent-color1;
   }

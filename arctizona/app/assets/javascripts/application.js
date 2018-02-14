@@ -6,9 +6,21 @@
 var menuToggle = function() {
 
   $('#menu-click').click(function() {
-    $('#menu-container').show(300);
+    $('#menu-container').show(100);
     $('#back').show();
     $(".wrapper").addClass("blur");
+  });
+
+  $('#back').click(function() {
+    $('#menu-container').hide(100);
+    $('#back').hide();
+    $(".wrapper").removeClass("blur");
+  });
+
+  $('#close-menu').click(function() {
+    $('#menu-container').hide(100);
+    $('#back').hide();
+    $(".wrapper").removeClass("blur");
   });
 
 };
