@@ -2,6 +2,7 @@ class Users::PurchasesController < ApplicationController
 
   def create
     @user = User.friendly.find(params[:user_id])
+    @album = Album.friendly.find(params[:album_id])
     @photo = Photo.friendly.find(params[:photo_id])
     @purchase = @photo.purchases.build(purchase_params)
 
