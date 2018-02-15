@@ -24,3 +24,4 @@ class CreatePurchases < ActiveRecord::Migration[5.0]
     add_index :purchases, :seller_id
   end
 end
+
