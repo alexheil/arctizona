@@ -19,6 +19,10 @@ class Users::PurchasesController < ApplicationController
     end
   end
 
+  def checkout
+    
+  end
+
   private 
 
     def purchase_params
