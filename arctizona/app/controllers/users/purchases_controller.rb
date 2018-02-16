@@ -11,7 +11,7 @@ class Users::PurchasesController < ApplicationController
     @purchase.complete_price = (@photo.total_price * @purchase.quantity) + @purchase.pay_your_own_price
   
     if @purchase.save
-      redirect_to user_album_photo_path(@user, @album, @photo)
+      redirect_to checkout_user_album_photo_purchase_path(@user, @album, @photo, @purchase)
       flash[:notice] = "how will you pay this?"
     else
       redirect_to artist_merch_path(@artist, @merch)
@@ -20,7 +20,11 @@ class Users::PurchasesController < ApplicationController
   end
 
   def checkout
-    
+    @seller = User.friendly.find(params[:user_id])
+    @album = Album.friendly.find(params[:album_id])
+    @photo = Photo.friendly.find(params[:photo_id])
+    @purchase = Purchase.find(params[:id])
+    @buyer = current_user
   end
 
   private 

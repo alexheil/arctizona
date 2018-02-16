@@ -1,0 +1,37 @@
+<div class="fivespace">
+  <%= form_for(@purchase, url: charge_user_album_photo_purchase_path(@user, @album, @photo, @purchase), :html => {:id => "payment-form"}) do |f| %>
+    <span class="payment-errors"></span>
+
+    <div class="threefourthcolumn twospace">
+      <div class="largefont onespace">
+        Card number
+      </div>
+        <input class="text-field" type="text" size="20" data-stripe="number"/>
+    </div>
+
+    <div class="onefourthcolumn twospace">
+      <div class="largefont onespace">
+        CVC
+      </div>
+        <input class="text-field" type="text" size="4" data-stripe="cvc"/>
+    </div>
+
+    <div class="largefont onespace">
+      Expiration
+    </div>
+    <div class="twocolumn">
+      <div class="largefont onespace">
+        Month <span class="posted">(MM)</span>
+      </div>
+      <input class="text-field" type="text" size="2" data-stripe="exp-month"/>
+    </div>
+    <div class="twocolumn">
+      <div class="largefont onespace">
+        Year <span class="posted">(YYYY)</span>
+      </div>
+      <input class="text-field" type="text" size="4" data-stripe="exp-year"/>
+    </div>
+
+    <button type="submit" class="submit-button">Submit payment</button>
+  <% end %>
+</div>
