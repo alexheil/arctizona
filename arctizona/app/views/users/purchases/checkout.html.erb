@@ -6,8 +6,6 @@
         Checkout
       </div>
 
-      <%= @purchase.complete_price %>
-
       <%= form_for(@purchase, url: charge_user_album_photo_purchase_path(@seller, @album, @photo, @purchase), :html => {:id => "payment-form"}) do |f| %>
         <span class="payment-errors"></span>
 
