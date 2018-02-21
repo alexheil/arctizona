@@ -27,6 +27,10 @@ class Users::PurchasesController < ApplicationController
     @buyer = current_user
   end
 
+  def charge
+
+  end
+
   private 
 
     def purchase_params
