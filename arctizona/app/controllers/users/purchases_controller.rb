@@ -15,7 +15,7 @@ class Users::PurchasesController < ApplicationController
       flash[:notice] = "How will you pay this?"
     else
       redirect_to user_album_photo_path(@user, @album, @photo)
-      flash.now[:alert] = "you have failed."
+      flash.now[:alert] = "You have failed."
     end
   end
 
