@@ -12,9 +12,9 @@ class Users::PurchasesController < ApplicationController
   
     if @purchase.save
       redirect_to checkout_user_album_photo_purchase_path(@user, @album, @photo, @purchase)
-      flash[:notice] = "how will you pay this?"
+      flash[:notice] = "How will you pay this?"
     else
-      redirect_to artist_merch_path(@artist, @merch)
+      redirect_to user_album_photo_path(@user, @album, @photo)
       flash.now[:alert] = "you have failed."
     end
   end
@@ -28,7 +28,41 @@ class Users::PurchasesController < ApplicationController
   end
 
   def charge
+    @seller = User.friendly.find(params[:user_id])
+    @album = Album.friendly.find(params[:album_id])
+    @photo = Photo.friendly.find(params[:photo_id])
+    @purchase = Purchase.find(params[:id])
+    @buyer = current_user
 
+    Stripe.api_key = Rails.configuration.stripe[:secret_key]
+    token = params[:stripeToken]
+    amount = ((@purchase.complete_price) * 100)
+    noisaea_fee = ((@purchase.complete_price * 0.134 + 0.30) * 100).round
+
+    begin
+      charge = Stripe::Charge.create(
+        amount: amount,
+        application_fee: noisaea_fee,
+        currency: @seller.payment_setting.currency,
+        destination: @seller.payment_setting.stripe_id,
+        source: token,
+        description: "#{@seller.username} | Noisaea"
+      )
+    rescue Stripe::CardError => e
+      # The card has been declined
+    end
+
+    if charge.save
+      @purchase.update_attributes(
+        stripe_charge_id: charge.id
+      )
+      send_purchase_email
+      redirect_to edit_user_album_photo_purchase_path(@user, @album, @photo, @purchase)
+      flash[:notice] = "#{@user.username} needs to know where to ship this."
+    else
+      render 'checkout'
+      flash.now[:alert] = "You have failed."
+    end
   end
 
   private 
