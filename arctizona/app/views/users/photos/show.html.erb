@@ -434,6 +434,22 @@
             </div>
             <div class="field">
               <div class="one-thirds">
+                <%= f.label :downloadable %>
+              </div>
+              <div class="two-thirds">
+                <%= f.check_box :downloadable, class: "text-field", id: "downloadable" %>
+              </div>
+            </div>
+            <div class="field">
+              <div class="one-thirds">
+                <%= f.label :shippable %>
+              </div>
+              <div class="two-thirds">
+                <%= f.check_box :shippable, class: "text-field", id: "shippable" %>
+              </div>
+            </div>
+            <div class="field">
+              <div class="one-thirds">
                 <%= f.label :shipping_price %>
               </div>
               <div class="two-thirds">

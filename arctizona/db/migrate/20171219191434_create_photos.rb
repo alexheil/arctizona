@@ -24,6 +24,8 @@ class CreatePhotos < ActiveRecord::Migration[5.0]
       t.boolean :for_sale, default: false
       t.integer :base_price
       t.integer :shipping_price
+      t.boolean :shippable, default: true
+      t.boolean :downloadable, default: false
       t.integer :total_price
       t.string  :currency
       t.integer :quantity

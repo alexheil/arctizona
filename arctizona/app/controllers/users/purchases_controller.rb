@@ -12,7 +12,7 @@ class Users::PurchasesController < ApplicationController
   
     if @purchase.save
       redirect_to checkout_user_album_photo_purchase_path(@user, @album, @photo, @purchase)
-      flash[:notice] = "How will you pay this?"
+      flash[:notice] = "How will you pay for this?"
     else
       redirect_to user_album_photo_path(@user, @album, @photo)
       flash.now[:alert] = "You have failed."
