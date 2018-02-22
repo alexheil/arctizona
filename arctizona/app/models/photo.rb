@@ -18,6 +18,7 @@ class Photo < ApplicationRecord
   validates :quantity, presence: true, if: :is_for_sale
   #validates :total_price, presence: true, if: :is_for_sale
   
+  before_save :downloadable_or_shippable_check
   before_save :art_or_photo_check
   before_save :reset_photo_options
   before_save :reset_art_options
