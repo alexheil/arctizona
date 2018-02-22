@@ -55,6 +55,16 @@ class Photo < ApplicationRecord
       end
     end
 
+    def downloadable_or_shippable_check
+      if self.downloadable? && self.shippable?
+        self.shippable = 1
+        self.downloadable = 0
+      elsif self.downloadable == false && self.shippable == false
+        self.shippable = 1
+        self.downloadable = 0
+      end
+    end
+
     def reset_photo_options
       if self.is_art?
         self.resolution = nil
