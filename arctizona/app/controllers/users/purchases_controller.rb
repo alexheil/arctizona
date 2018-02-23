@@ -49,7 +49,7 @@ class Users::PurchasesController < ApplicationController
         description: "#{@seller.username} | Noisaea"
       )
     rescue Stripe::CardError => e
-      # The card has been
+      # The card has been declined
     end
 
     if charge.save
